@@ -31,7 +31,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'acts_as_xlsx'
-gem 'rubyzip', '~> 0.9.8'
+gem 'rubyzip', '~> 1.3.0'
 gem 'iconv', '~> 1.0.3'
 gem 'roo'
 # Use Redis adapter to run Action Cable in production
