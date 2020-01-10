@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h1> Environment created for <%= @environment.name %> </h1>
 <p>
   <strong>Url:</strong>
   <%= @environment.url %>
@@ -13,6 +13,21 @@
 <p>
   <strong>Password:</strong>
   <%= @environment.password %>
+</p>
+
+<p>
+  <strong>Login Field:</strong>
+  <%= @environment.login_field %>
+</p>
+
+<p>
+  <strong>Password Field:</strong>
+  <%= @environment.password_field %>
+</p>
+
+<p>
+  <strong>Action Button:</strong>
+  <%= @environment.action_button %>
 </p>
 
 <%= link_to 'Edit', edit_environment_path(@environment) %> |

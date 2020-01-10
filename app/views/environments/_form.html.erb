@@ -12,19 +12,31 @@
   <% end %>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_area :name %>
+    <%= f.text_area :name, placeholder:"Name of your application" %>
   </div>
   <div class="field">
     <%= f.label :url %><br>
-    <%= f.text_area :url %>
+    <%= f.text_area :url, placeholder:"please enter your application login url" %>
   </div>
   <div class="field">
     <%= f.label :username %><br>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, placeholder:"username/email" %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.text_field :password, placeholder:"password" %>
+  </div>
+  <div class="field">
+    <%= f.label :login_field %><br>
+    <%= f.text_area :login_field, placeholder:"Inspect your application username and enter the id of that field" %>
+  </div>
+  <div class="field">
+    <%= f.label :password_field %><br>
+    <%= f.text_area :password_field, placeholder:"Inspect your application password field and enter the id " %>
+  </div>
+  <div class="field">
+    <%= f.label :action_button %><br>
+    <%= f.text_area :action_button, placeholder:"Inspect your application login button field and look for name and enter it. " %>
   </div>
   <div class="actions">
     <%= f.submit %>
