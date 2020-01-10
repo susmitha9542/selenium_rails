@@ -1,0 +1,33 @@
+<%= form_for(@result_suite) do |f| %>
+  <% if @result_suite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result_suite.errors.count, "error") %> prohibited this result_suite from being saved:</h2>
+
+      <ul>
+      <% @result_suite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rd_id %><br>
+    <%= f.number_field :rd_id %>
+  </div>
+  <div class="field">
+    <%= f.label :test_suite_id %><br>
+    <%= f.number_field :test_suite_id %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.datetime_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.datetime_select :end_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

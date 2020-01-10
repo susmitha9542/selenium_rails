@@ -1,0 +1,9 @@
+$('#health-modal').html('<%= j render 'test_cases' %>');
+$('#health-modal-close').click(function(){
+	$("#cases").modal('hide');
+});
+$(".modal-backdrop").click(function(){
+	$("#cases").modal('hide');
+});
+$("#test-cases").dataTable();
+console.log("CASES");

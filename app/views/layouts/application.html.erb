@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Healthix</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid">
+	<%= render 'layouts/header'%>
+	<% if user_signed_in? %>
+		<%= render 'layouts/nav'%>
+	<% end %>
+	<%= yield %>
+	<div class="push"></div>
+	</div>
+	<%= render 'layouts/footer'%>
+
+</body>
+</html>

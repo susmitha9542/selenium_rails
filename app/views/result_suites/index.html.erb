@@ -1,0 +1,31 @@
+<h1>Listing result_suites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rd</th>
+      <th>Test suite</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @result_suites.each do |result_suite| %>
+      <tr>
+        <td><%= result_suite.rd_id %></td>
+        <td><%= result_suite.test_suite_id %></td>
+        <td><%= result_suite.start_time %></td>
+        <td><%= result_suite.end_time %></td>
+        <td><%= link_to 'Show', result_suite %></td>
+        <td><%= link_to 'Edit', edit_result_suite_path(result_suite) %></td>
+        <td><%= link_to 'Destroy', result_suite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Result suite', new_result_suite_path %>

@@ -1,0 +1,2 @@
+module ResultCasesHelper
+end

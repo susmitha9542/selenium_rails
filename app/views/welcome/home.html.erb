@@ -1,0 +1,17 @@
+<div class="row" id="middle">
+	
+  <div class="row" id="enviro-holder">
+	
+	<%= form_tag('/home') do %>
+		<div class="col-md-5">Select an Environment:</div>
+		<div class="col-md-5"><%= collection_select(:environment, :id, @environments, :id, :name, :include_blank => true)%></div>
+		<%= submit_tag "Go", class: "btn btn-primary go" %>
+	  
+	<% end %>
+	<br>
+	<div class="col-md-13"><%= link_to "Create a New Environment", new_environment_path, class: "btn btn-success" %></div>
+  </div>
+  <div class="row" id="link-holder">
+  	<%= link_to "Create a New Environment", new_environment_path, class: "btn btn-success" %>
+  </div>
+</div>

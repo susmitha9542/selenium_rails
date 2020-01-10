@@ -1,0 +1,29 @@
+<h3 style="text-align:center;">Test Cases for <%= @test_suite.name %></h3>
+<table id="test-cases">
+	<thead>
+		<tr>
+			<th>Field Name</th>
+  			<th>Field Type</th>
+  			<th>Read Element</th>
+  			<th>Input Value</th>
+  			<th>Action</th>
+  			<th>Action URL</th>
+  			<th>Created At</th>
+  			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @test_cases.each do |tc| %>
+		<tr>
+			<td><%= tc.field_name %></td>
+  			<td><%= tc.field_type %></td>
+  			<td><%= tc.read_element %></td>
+  			<td><%= tc.input_value %></td>
+  			<td><%= tc.action %></td>
+  			<td><%= tc.action_url %></td>
+  			<td><%= tc.created_at %></td>
+  			<td>X</td>>
+		</tr>
+	  <% end %>
+	</tbody>
+</table>

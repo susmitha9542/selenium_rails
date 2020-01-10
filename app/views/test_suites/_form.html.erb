@@ -1,0 +1,63 @@
+<%= form_for(@test_suite) do |f| %>
+  <% if @test_suite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@test_suite.errors.count, "error") %> prohibited this test_suite from being saved:</h2>
+
+      <ul>
+      <% @test_suite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Default?" %>
+    <% if Environment.find(@test_suite.environment_id).default_suite_id == @test_suite.id %>
+    	<input type="checkbox" class="checkbox1" name="default" value="1" checked>
+    <% else %>
+    	<input type="checkbox" class="checkbox1" name="default" value="1">
+    <% end %>
+  </div>
+  <table id="test_case">
+  	<thead>
+  		<tr>
+  			<!--<th>Add to Suite?</th>-->
+  			<th>Field Name</th>
+  			<th>Field Type</th>
+  			<th>Read Element</th>
+  			<th>Input Value</th>
+  			<th>Action</th>
+  			<th>Action URL</th>
+  			<th>Created At</th>
+  			<th>Sequence</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  	  <% @test_cases.each do |tc| %>
+  		<tr>
+  			<!--<td><input type="checkbox" class="checkbox1" name="case[<%= tc.id %>]" id="case[<%= tc.id %>] value="<%= tc.id %>"></td>-->
+  			<td><%= tc.field_name %></td>
+  			<td><%= tc.field_type %></td>
+  			<td><%= tc.read_element %></td>
+  			<td><%= tc.input_value %></td>
+  			<td><%= tc.action %></td>
+  			<td><%= tc.action_url %></td>
+  			<td><%= tc.created_at %></td>
+  			<td><%= CaseSuite.where(test_suite_id: @test_suite.id, test_case_id: tc.id).first.sequence %></td>
+  		</tr>
+  	  <% end %>
+  	</tbody>
+  </table></br></br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+	$("#test_case").dataTable();
+</script>

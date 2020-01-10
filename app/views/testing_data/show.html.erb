@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Test:</strong>
+  <%= @testing_datum.test_id %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @testing_datum.result_id %>
+</p>
+
+<p>
+  <strong>Date of test:</strong>
+  <%= @testing_datum.date_of_test %>
+</p>
+
+<p>
+  <strong>Browser:</strong>
+  <%= @testing_datum.browser %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @testing_datum.details %>
+</p>
+
+<%= link_to 'Edit', edit_testing_datum_path(@testing_datum) %> |
+<%= link_to 'Back', testing_data_path %>

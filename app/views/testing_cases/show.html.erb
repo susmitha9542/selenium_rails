@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Field name:</strong>
+  <%= @testing_case.field_name %>
+</p>
+
+<p>
+  <strong>Field type:</strong>
+  <%= @testing_case.field_type %>
+</p>
+
+<p>
+  <strong>Business rules:</strong>
+  <%= @testing_case.business_rules %>
+</p>
+
+<%= link_to 'Edit', edit_testing_case_path(@testing_case) %> |
+<%= link_to 'Back', testing_cases_path %>

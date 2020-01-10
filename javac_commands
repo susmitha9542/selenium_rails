@@ -1,0 +1,22 @@
+javac -classpath \C:\Progra~1\java\jdk1.8.0_191\lib\sa-jdi.jar;C:\Users\susmitha\Downloads\src;. C:\Users\susmitha\Downloads\src\com\rsi\selenium\factory\H2OTesterConnectionFactory.java
+
+------------------------
+SUCCESSFUL COMMAND
+1.
+C:\Program Files\java\jdk1.8.0_191\bin>
+java -classpath C:\Progra~1\java\jdk1.8.0_191\lib\sa-jdi.jar;C:\Progra~1\java\jdk1.8.0_191\tools.jar;C:\Users\susmitha\Downloads\Rsitester\lib\log4j-1.2.15.jar;C:\Users\susmitha\Downloads\Rsitester\src;.C:\Users\susmitha\Downloads\Rsitester\lib\selenium-java-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib\selenium-server-standalone-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\src com.rsi.selenium.RsitesterMain
+2.
+java -classpath C:\Progra~1\java\jdk1.8.0_191\lib\sa-jdi.jar;C:\Progra~1\java\jdk1.8.0_191\tools.jar;C:\Users\susmitha\Downloads\Rsitester\lib\log4j-1.2.15.jar;C:\Users\susmitha\Downloads\Rsitester\src;.C:\Users\susmitha\Downloads\Rsitester\lib\selenium-java-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib\selenium-server-standalone-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\src com.rsi.selenium.RsitesterMain
+
+3.
+java -classpath C:\Progra~1\java\jdk1.8.0_191\lib\sa-jdi.jar;C:\Progra~1\java\jdk1.8.0_191\tools.jar;C:\Users\susmitha\Downloads\Rsitester\lib\log4j-1.2.15.jar;C:\Users\susmitha\Downloads\Rsitester\src;.C:\Users\susmitha\Downloads\Rsitester\lib\selenium-java-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib\selenium-server-standalone-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib;C:\Users\susmitha\Downloads\Rsitester\lib\mysql-connector-java-5.0.8-bin;C:\Users\susmitha\Downloads\Rsitester\src com.rsi.selenium.RsitesterMain
+
+java -classpath C:\Progra~1\java\jdk1.8.0_191\lib\sa-jdi.jar;C:\Progra~1\java\jdk1.8.0_191\tools.jar;C:\Users\susmitha\Downloads\Rsitester\lib\log4j-1.2.15.jar;C:\Users\susmitha\Downloads\Rsitester\src;C:\Users\susmitha\Downloads\Rsitester\lib\selenium-java-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib\selenium-server-standalone-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib;C:\Users\susmitha\Downloads\Rsitester\lib\mysql-connector-java-5.0.8-bin.jar;C:\Users\susmitha\Downloads\Rsitester\src com.rsi.selenium.RsitesterMain
+
+Compiling the code
+javac -classpath C:\Progra~1\java\jdk1.8.0_191\lib\sa-jdi.jar;C:\Progra~1\java\jdk1.8.0_191\tools.jar;C:\Users\susmitha\Downloads\Rsitester\lib\log4j-1.2.15.jar;C:\Users\susmitha\Downloads\Rsitester\src;C:\Users\susmitha\Downloads\Rsitester\lib\selenium-java-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib\selenium-server-standalone-2.45.0.jar;C:\Users\susmitha\Downloads\Rsitester\lib;C:\Users\susmitha\Downloads\Rsitester\lib\mysql-connector-java-5.0.8-bin;C:\Users\susmitha\Downloads\Rsitester\src
+C:\Users\susmitha\Downloads\Rsitester\src\com\rsi\dataObject\H2OApplication.java
+C:\Users\susmitha\Downloads\Rsitester\src\com\rsi\selenium\RsiChromeTester.java
+C:\Users\susmitha\Downloads\Rsitester\src\com\rsi\selenium\RsitesterMain.java
+C:\Users\susmitha\Downloads\Rsitester\src\com\rsi\selenium\factory\H2OTesterConnectionFactory.java
+---------------------

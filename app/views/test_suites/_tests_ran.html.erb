@@ -1,0 +1,26 @@
+<h1 style="text-align:center; font-weight:bold">Results for <%= @test_suite.name %></h1>
+<table id="scheduled-suites">
+	<thead>
+		<tr>
+			<th>Scheduled Date</th>
+			<th>Completed Date</th>
+			<th>Status</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @schedulers.each do |s| %>
+		<tr>
+			<td><%= s.scheduled_date %></td>
+			<td><%= s.completed_date %></td>
+			<td><%= s.status %></td>
+			<td>Results Link</td>
+		</tr>
+	  <% end %>
+	</tbody>
+</table>
+
+
+<script>
+	$("#scheduled-suites").DataTable();
+</script>

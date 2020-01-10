@@ -1,0 +1,16 @@
+<%= form_tag({action: "import" }, :multipart => true, :method => :post) do%>
+	<div class="row" id="import-holder">
+		<h3>Import Suite</h3>
+		<div class="col-md-3 col-sm-3">
+			Suite Name
+			<%= text_field_tag :name %>
+		</div>
+		<div class="col-md-3 col-sm-3">
+			Upload File
+			<%= file_field_tag :file %>
+		</div>
+		<div class="col-md-3 col-sm-3">
+			<%= submit_tag "Upload file" , :class => 'btn btn-primary btn-sm' %>
+		</div>
+	</div>
+<% end %>

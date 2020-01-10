@@ -1,0 +1,29 @@
+<h1>Listing testing_cases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field name</th>
+      <th>Field type</th>
+      <th>Business rules</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @testing_cases.each do |testing_case| %>
+      <tr>
+        <td><%= testing_case.field_name %></td>
+        <td><%= testing_case.field_type %></td>
+        <td><%= testing_case.business_rules %></td>
+        <td><%= link_to 'Show', testing_case %></td>
+        <td><%= link_to 'Edit', edit_testing_case_path(testing_case) %></td>
+        <td><%= link_to 'Destroy', testing_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Testing case', new_testing_case_path %>

@@ -1,0 +1,25 @@
+<h1>Listing results_dictionaries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results_dictionaries.each do |results_dictionary| %>
+      <tr>
+        <td><%= results_dictionary.description %></td>
+        <td><%= link_to 'Show', results_dictionary %></td>
+        <td><%= link_to 'Edit', edit_results_dictionary_path(results_dictionary) %></td>
+        <td><%= link_to 'Destroy', results_dictionary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Results dictionary', new_results_dictionary_path %>
