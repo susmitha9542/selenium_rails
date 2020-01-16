@@ -18,7 +18,7 @@ class TestSuite < ActiveRecord::Base
     end
   end
   
-  def self.import(file, name, environment_id)
+  def self.import(file, name, environment_id, dependency)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     if validate_header(header) then
@@ -29,30 +29,39 @@ class TestSuite < ActiveRecord::Base
       new_suite.name = name
       logger.debug "TestSuite.import - new suite name is #{new_suite.name}"
       new_suite.environment_id = environment_id
+      new_suite.dependency = dependency
       
       # Now starting to iterate through each row. 
       (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       logger.debug "TestSuite.import - row is #{row}"
-        test_case = TestCase.where(field_name: row['field_name']).first
-        if test_case.blank?
-          test_case = TestCase.new
-        end
-        if !row['field_name'].blank?
-          test_case.field_name = row['field_name']
-        end
-        if !row['read_element'].blank?
-          test_case.read_element = row['read_element']
-        end
-        if !row['input_value'].blank?
-          test_case.input_value = row['input_value']
-        end
-        if !row['action'].blank?
-          test_case.action = row['action']
-        end
-        if !row['action_url'].blank?
-          test_case.action_url = row['action_url']
-        end
+        test_case = TestCase.new
+        test_case.dependency = dependency
+        test_case.field_name = row['field_name']
+        test_case.read_element = row['read_element']
+        test_case.input_value = row['input_value']
+        test_case.action = row['action']
+        test_case.action_url = row['action_url']
+        #test_case = TestCase.where(field_name: row['field_name']).first
+        #if test_case.blank?
+        #  test_case = TestCase.new
+        #  test_case.dependency = dependency
+        #end
+        #if !row['field_name'].blank?
+        #  test_case.field_name = row['field_name']
+        #end
+        #if !row['read_element'].blank?
+        #  test_case.read_element = row['read_element']
+        #end
+        #if !row['input_value'].blank?
+        #  test_case.input_value = row['input_value']
+        #end
+        #if !row['action'].blank?
+        #  test_case.action = row['action']
+        #end
+        #if !row['action_url'].blank?
+        #  test_case.action_url = row['action_url']
+        #end 
         test_case.save!
         CaseSuite.create(test_suite_id: new_suite_id, test_case_id: test_case.id, sequence: row['sequence'])
       end

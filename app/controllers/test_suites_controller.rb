@@ -85,7 +85,14 @@ class TestSuitesController < ApplicationController
   end
   
   def import
-    TestSuite.import(params[:file], params[:name], session[:enviro_id])
+    logger.debug("THE PARAMS ARE #{params.inspect}")
+    if params[:dependency].present?
+      logger.debug("DEPENDENCY PRESENT")
+      dependency = params[:dependency]
+    else
+      dependency = 0
+    end
+    TestSuite.import(params[:file], params[:name], session[:enviro_id], dependency)
   end
   
   def tests_ran
@@ -101,6 +108,6 @@ class TestSuitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_suite_params
-      params.require(:test_suite).permit(:name, :environment_id, test_case_ids: [])
+      params.require(:test_suite).permit(:name, :environment_id, :dependency, test_case_ids: [])
     end
 end

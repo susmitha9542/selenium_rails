@@ -10,6 +10,10 @@
 			<%= file_field_tag :file %>
 		</div>
 		<div class="col-md-3 col-sm-3">
+			Cases depends on each other?
+			<%= check_box_tag :dependency %>
+		</div>
+		<div class="col-md-3 col-sm-3">
 			<%= submit_tag "Upload file" , :class => 'btn btn-primary btn-sm' %>
 		</div>
 	</div>
