@@ -38,6 +38,7 @@ class TestSuite < ActiveRecord::Base
         test_case = TestCase.new
         test_case.dependency = dependency
         test_case.field_name = row['field_name']
+        test_case.field_type = row['field_type']
         test_case.read_element = row['read_element']
         test_case.input_value = row['input_value']
         test_case.action = row['action']
