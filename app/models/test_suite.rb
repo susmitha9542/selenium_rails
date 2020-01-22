@@ -44,6 +44,7 @@ class TestSuite < ActiveRecord::Base
         test_case.action = row['action']
         test_case.action_url = row['action_url']
         test_case.base_url = row['base_url']
+        test_case.xpath = row['xpath']
         #test_case = TestCase.where(field_name: row['field_name']).first
         #if test_case.blank?
         #  test_case = TestCase.new
