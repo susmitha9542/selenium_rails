@@ -1,5 +1,5 @@
 <h3 style="text-align:center;">Test Cases for <%#= @test_suite.name %></h3>
-<table id="test-cases">
+<table id="sch-cases" style="width:100%">
 	<thead>
 		<tr>
 			<th>Test Suite Name</th>
@@ -9,7 +9,6 @@
   			<th>Created Date</th>
   			<th>Updated Date</th>
   			<th>Dependency</th>
-  			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -22,9 +21,30 @@
         <td><%= sc.created_at %></td>
   			<td><%= sc.updated_at %></td>
   			<td><%= sc.dependency %></td>
-  			
-  			<td>X</td>>
 		</tr>
 	  <% end %>
 	</tbody> 
 </table>
+
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#sch-cases tr:nth-child(even) {
+  background-color: #eee;
+}
+table#sch-cases tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#sch-cases th {
+  background-color: black;
+  color: white;
+}

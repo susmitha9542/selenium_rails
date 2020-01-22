@@ -14,13 +14,13 @@
 <h1 style="text-align:center;">Test Suites for <%= "#{@environment_name}" %></h1>
 <form action="/run_suites" method="post">
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<table id="suite-table-dude">
+	<table id="suite-table-dude" style="width:100%">
 		<thead>
 			<tr>
+				<th>Schedule Id</th>
+				<th>Testcase Name</th>
 				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				
 			</tr>
 		</thead>
 		<!-- <tbody>
@@ -49,4 +49,11 @@
 	</table>
 	
 </form>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 
