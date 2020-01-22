@@ -1,0 +1,30 @@
+<h3 style="text-align:center;">Test Cases for <%#= @test_suite.name %></h3>
+<table id="test-cases">
+	<thead>
+		<tr>
+			<th>Test Suite Name</th>
+  			<th>Schedule Date</th>
+  			<th>Completed Date</th>
+  			<th>Status</th>
+  			<th>Created Date</th>
+  			<th>Updated Date</th>
+  			<th>Dependency</th>
+  			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @schedule_cases.each do |sc| %>
+		<tr>
+			<td><%= sc.test_suite_id %></td>
+  			<td><%= sc.scheduled_date %></td>
+  			<td><%= sc.completed_date %></td>
+  			<td><%= sc.status %></td>
+        <td><%= sc.created_at %></td>
+  			<td><%= sc.updated_at %></td>
+  			<td><%= sc.dependency %></td>
+  			
+  			<td>X</td>>
+		</tr>
+	  <% end %>
+	</tbody> 
+</table>

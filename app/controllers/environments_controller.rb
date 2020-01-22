@@ -70,6 +70,18 @@ class EnvironmentsController < ApplicationController
       @test_suites = TestSuite.all
     end
   end
+
+  def list_all_reports
+    @schedule_cases = Scheduler.all
+    respond_to do |format|  
+      format.html{}
+    end
+  end
+
+  def reports
+    @test_suites = TestSuite.all
+    @schedule = Scheduler.all
+  end
   
   def run_suites
     if params[:suite].present?

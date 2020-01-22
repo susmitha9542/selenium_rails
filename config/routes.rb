@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   match '/home', to: "welcome#home", via: ["get", "post"]
   
   match "environments(/:id)/test_suites", to: "environments#test_suites", via: "get"
-  
+
+  match "/list_all_reports", to: "environments#list_all_reports", via: "get"
+
+  match "/reports", to: "environments#reports", via: "get"
+
   match "run_suites", to: "environments#run_suites", via: "get"
   
   match "run_suites", to: "environments#run_suites", via: "post"
