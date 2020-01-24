@@ -72,7 +72,8 @@ class EnvironmentsController < ApplicationController
   end
 
   def list_all_reports
-    @schedule_cases = Scheduler.all
+    @schedule_cases = Scheduler.find(params[:id])
+    @result_cases = ResultCase.where(scheduler_id: params[:id])
     respond_to do |format|  
       format.html{}
     end

@@ -2,30 +2,29 @@
 <table id="sch-cases" style="width:100%">
 	<thead>
 		<tr>
-			<th>Test Suite Name</th>
-  			<th>Schedule Date</th>
-  			<th>Completed Date</th>
+  			<th>Scheduler id</th>
   			<th>Status</th>
   			<th>Created Date</th>
   			<th>Updated Date</th>
-  			<th>Dependency</th>
+  			<th>Screenshot File Location</th>
 		</tr>
 	</thead>
 	<tbody>
-	  <% @schedule_cases.each do |sc| %>
+	  <% @result_cases.each do |rc| %>
 		<tr>
-			<td><%= sc.test_suite_id %></td>
-  			<td><%= sc.scheduled_date %></td>
-  			<td><%= sc.completed_date %></td>
-  			<td><%= sc.status %></td>
-        <td><%= sc.created_at %></td>
-  			<td><%= sc.updated_at %></td>
-  			<td><%= sc.dependency %></td>
+  			<td><%= rc.scheduler_id %></td>
+        <% if rc.rd_id == 1%>
+          <td>Completed</td>
+        <% else %>
+          <td>Failed</td>
+        <% end -%>
+        <td><%= rc.created_at %></td>
+  			<td><%= rc.updated_at %></td>
+  			<td><%= rc.screenshot_file_location %></td>
 		</tr>
 	  <% end %>
 	</tbody> 
 </table>
-
 <script>
   $("#sch-cases").dataTable();
 </script>
