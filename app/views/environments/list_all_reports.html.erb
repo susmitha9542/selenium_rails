@@ -2,17 +2,18 @@
 <table id="sch-cases" style="width:100%">
 	<thead>
 		<tr>
-  			<th>Scheduler id</th>
+  			<th>Sequence id</th>
   			<th>Status</th>
-  			<th>Created Date</th>
-  			<th>Updated Date</th>
+  			<th>Start time</th>
+  			<th>End Time</th>
   			<th>Screenshot File Location</th>
+        <th>Error Description</th>
 		</tr>
 	</thead>
 	<tbody>
 	  <% @result_cases.each do |rc| %>
 		<tr>
-  			<td><%= rc.scheduler_id %></td>
+  			<td><%= CaseSuite.where(test_case_id: rc.test_case_id).pluck(:sequence).join(',') %></td>
         <% if rc.rd_id == 1%>
           <td>Completed</td>
         <% else %>
@@ -21,6 +22,7 @@
         <td><%= rc.created_at %></td>
   			<td><%= rc.updated_at %></td>
   			<td><%= rc.screenshot_file_location %></td>
+        <td></td>
 		</tr>
 	  <% end %>
 	</tbody> 
