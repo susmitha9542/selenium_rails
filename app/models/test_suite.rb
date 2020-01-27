@@ -22,15 +22,16 @@ class TestSuite < ActiveRecord::Base
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     if validate_header(header) then
-      no_of_suites = TestSuite.all.count
+      #no_of_suites = TestSuite.all.count
       
       new_suite = TestSuite.new
-      new_suite_id = no_of_suites.to_i + 1
+      #new_suite_id = no_of_suites.to_i + 1
       new_suite.name = name
       logger.debug "TestSuite.import - new suite name is #{new_suite.name}"
       new_suite.environment_id = environment_id
       new_suite.dependency = dependency
-      
+      new_suite.save!
+      new_suite_id = new_suite.id
       # Now starting to iterate through each row. 
       (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
@@ -67,9 +68,10 @@ class TestSuite < ActiveRecord::Base
         #  test_case.action_url = row['action_url']
         #end 
         test_case.save!
+
         CaseSuite.create(test_suite_id: new_suite_id, test_case_id: test_case.id, sequence: row['sequence'])
       end
-      new_suite.save!
+      
     else
       logger.error "TestSuite.import invalid xls file. Exitting without creating a test suite"
       return  

@@ -68,7 +68,27 @@ class TestSuitesController < ApplicationController
   # DELETE /test_suites/1
   # DELETE /test_suites/1.json
   def destroy
-    @test_suite.destroy
+    id = params[:id]
+    test_suite = TestSuite.find(id)
+    if test_suite.test_cases.present?
+      logger.debug("TEST CASES ARE #{test_suite.test_cases.inspect}")
+      tc_ids = test_suite.test_cases.pluck(:id)
+      tc_ids.each do |id|
+        rc = ResultCase.where(test_case_id: id)
+        rc.destroy_all
+      end
+      test_suite.test_cases.destroy
+    end
+    if test_suite.schedulers.present?
+      sch_ids = test_suite.schedulers.pluck(:id)
+      sch_ids.each do |s_id|
+        rs = ResultSuite.where(scheduler_id: s_id)
+        rs.destroy_all
+      end
+      logger.debug("SCHEDULERS ARE  #{test_suite.schedulers.inspect}")
+      test_suite.schedulers.destroy
+    end
+    @test_suite.destroy #This will destroy caseSuites also
     respond_to do |format|
       format.html { redirect_to test_suites_url, notice: 'Test suite was successfully destroyed.' }
       format.json { head :no_content }
