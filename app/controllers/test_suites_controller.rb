@@ -76,6 +76,8 @@ class TestSuitesController < ApplicationController
       tc_ids.each do |id|
         rc = ResultCase.where(test_case_id: id)
         rc.destroy_all
+        tc = TestCase.where(id: id)
+        tc.destroy_all
       end
       test_suite.test_cases.destroy
     end
@@ -84,9 +86,11 @@ class TestSuitesController < ApplicationController
       sch_ids.each do |s_id|
         rs = ResultSuite.where(scheduler_id: s_id)
         rs.destroy_all
+        sch = Scheduler.where(id: s_id)
+        sch.destroy_all
       end
       logger.debug("SCHEDULERS ARE  #{test_suite.schedulers.inspect}")
-      test_suite.schedulers.destroy
+      #test_suite.schedulers.destroy
     end
     @test_suite.destroy #This will destroy caseSuites also
     respond_to do |format|
