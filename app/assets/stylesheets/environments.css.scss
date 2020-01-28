@@ -24,3 +24,31 @@
   background-color: #4CAF50;
   color: white;
 }
+
+
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 8px;;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#sch-cases tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+table#sch-cases tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#sch-cases th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}

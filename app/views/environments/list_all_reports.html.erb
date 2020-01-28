@@ -2,12 +2,13 @@
 <table id="sch-cases" style="width:100%">
 	<thead>
 		<tr>
-  			<th>Sequence id</th>
+  			<th>Sequence Number</th>
   			<th>Status</th>
   			<th>Start time</th>
   			<th>End Time</th>
-  			<th>Screenshot File Location</th>
         <th>Error Description</th>
+  			<th>Screenshot File Location</th>
+        
 		</tr>
 	</thead>
 	<tbody>
@@ -21,8 +22,12 @@
         <% end -%>
         <td><%= rc.created_at %></td>
   			<td><%= rc.updated_at %></td>
-  			<td><%= rc.screenshot_file_location %></td>
         <td></td>
+        <% if !rc.screenshot_file_location.nil? %>
+          <td><%= link_to rc.screenshot_file_location,  {controller: "environments", action: "images", file_name: rc.screenshot_file_location }, target: :_blank %></td>
+        <% else %>
+          <td></td>
+        <% end -%>
 		</tr>
 	  <% end %>
 	</tbody> 
@@ -31,26 +36,5 @@
   $("#sch-cases").dataTable();
 </script>
 
-<style>
-table {
-  width:100%;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
-table#sch-cases tr:nth-child(even) {
-  background-color: #eee;
-}
-table#sch-cases tr:nth-child(odd) {
- background-color: #fff;
-}
-table#sch-cases th {
-  background-color: black;
-  color: white;
-}
+
 

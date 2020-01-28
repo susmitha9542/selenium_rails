@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   match 'test_suites(/:id)/tests_ran', to: "test_suites#tests_ran", via: "get"
   
   match "import_suite", to: "test_suites#import_suite", via: "get"
+
+  match "images", to: "environments#images", via: "get"
   
   post "import" => "test_suites#import"
 
