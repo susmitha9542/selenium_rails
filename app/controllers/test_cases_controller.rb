@@ -4,7 +4,11 @@ class TestCasesController < ApplicationController
   # GET /test_cases
   # GET /test_cases.json
   def index
-    @test_cases = TestCase.all
+    if params[:id].present?
+      @test_cases = TestSuite.find(params[:id]).test_cases
+    else
+      @test_cases = TestCase.all
+    end
   end
 
   # GET /test_cases/1

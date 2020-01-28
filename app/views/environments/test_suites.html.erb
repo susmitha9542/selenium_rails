@@ -32,7 +32,7 @@
 				<td><%= ts.id %></td>
 				<td><%= ts.name %></td>
 				<td class="button-cell"><%= link_to "Cases", {controller: "test_suites", action: "test_cases", id: ts.id }, "data-toggle" => "modal", "data-target" => "#cases", class: "btn btn-default btn-sm", remote: true %>
-					<%= link_to "Edit", edit_test_suite_path(ts.id), class: "btn btn-default btn-sm" %>
+					<%= link_to "Edit", {controller: "test_cases", action: "index", id: ts.id }, class: "btn btn-default btn-sm" %>
 					<%= link_to "Schedule", {controller: "test_suites", action: "tests_ran", id: ts.id }, class: "btn btn-default btn-sm", "data-toggle" => "modal", "data-target" => "#cases", remote: true %>
 					<%= link_to 'Destroy', {controller: "test_suites", action: "destroy", id: ts.id }, method: "delete", class: "btn btn-default btn-sm" %>
 				</td>
