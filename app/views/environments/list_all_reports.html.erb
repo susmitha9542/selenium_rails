@@ -3,6 +3,7 @@
 	<thead>
 		<tr>
   			<th>Sequence Number</th>
+        <th>Description</th>
   			<th>Status</th>
   			<th>Start time</th>
   			<th>End Time</th>
@@ -15,6 +16,7 @@
 	  <% @result_cases.each do |rc| %>
 		<tr>
   			<td><%= CaseSuite.where(test_case_id: rc.test_case_id).pluck(:sequence).join(',') %></td>
+        <td><%= TestCase.find(rc.test_case_id).description%></td>
         <% if rc.rd_id == 1%>
           <td>Completed</td>
         <% else %>
