@@ -14,7 +14,7 @@
 	<tbody>
 	  <% @result_cases.each do |rc| %>
 		<tr>
-  			<td><%= CaseSuite.where(test_case_id: rc.test_case_id).pluck(:sequence).join(',') %></td>
+  			<td><%= link_to CaseSuite.where(test_case_id: rc.test_case_id).pluck(:sequence).join(','), modal_show_path, remote: true, data: { target: '#modal-show', toggle: 'modal' }, class: 'nav-link' %></td>
         <% if rc.rd_id == 1%>
           <td>Completed</td>
         <% else %>
@@ -32,6 +32,13 @@
 	  <% end %>
 	</tbody> 
 </table>
+
+<div id="modal-show" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
 <script>
   $("#sch-cases").dataTable({
     "iDisplayLength": 100

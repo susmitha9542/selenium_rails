@@ -55,6 +55,14 @@ class TestCasesController < ApplicationController
     end
   end
 
+  def modal_show
+    @test_case = TestCase.all
+    respond_to do |format|
+      format.html
+      format.js
+    end 
+  end
+
   # DELETE /test_cases/1
   # DELETE /test_cases/1.json
   def destroy
