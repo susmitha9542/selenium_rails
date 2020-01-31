@@ -1,3 +1,20 @@
 // Place all the styles related to the test_cases controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+  #leftbox { 
+    float:left;  
+    width:25%;  
+  } 
+  #middlebox{ 
+    float:left; 
+    width:25%;  
+  } 
+  #rightbox{ 
+    float:right;  
+    width:25%;  
+  } 
+  #endbox{ 
+    float:right;  
+    width:25%;  
+  } 

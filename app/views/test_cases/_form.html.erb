@@ -11,33 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :field_name %><br>
+  <div class="field" id = "leftbox">
+    <%= f.label :field_name %>
     <%= f.text_field :field_name %>
   </div>
-  <div class="field">
-    <%= f.label :field_type %><br>
+  <div class="field" id = "middlebox">
+    <%= f.label :field_type %>
     <%= f.text_field :field_type %>
   </div>
-  <div class="field">
-    <%= f.label :read_element %><br>
+  <div class="field" id = "rightbox">
+    <%= f.label :read_element %>
     <%= f.text_field :read_element %>
   </div>
-  <div class="field">
-    <%= f.label :input_value %><br>
+  <div class="field" id = "endbox">
+    <%= f.label :input_value %>
     <%= f.text_field :input_value %>
   </div>
-  <div class="field">
-    <%= f.label :string %><br>
+  <div class="field" id = "leftbox">
+    <%= f.label :string %>
     <%= f.text_field :string %>
   </div>
-  <div class="field">
-    <%= f.label :action %><br>
+  <div class="field" id = "middlebox">
+    <%= f.label :action %>
     <%= f.text_field :action %>
   </div>
-  <div class="field">
-    <%= f.label :action_url %><br>
+  <div class="field" id = "rightbox">
+    <%= f.label :action_url %>
     <%= f.text_area :action_url %>
+  </div>
+  <div class="field" id = "endbox">
+    <%= f.label :base_url %>
+    <%= f.text_area :base_url %>
+  </div>
+  <div class="field" id = "leftbox">
+    <%= f.label :xpath %>
+    <%= f.text_area :xpath %>
+  </div>
+  <div class="field" id = "middlebox">
+    <%= f.label :sleeps %>
+    <%= f.text_area :sleeps %>
+  </div>
+  <div class="field" id = "rightbox">
+    <%= f.label :new_tab %>
+    <%= f.text_area :new_tab %>
+  </div>
+  <div class="field" id = "endbox">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :need_screenshot %>
+    <%= f.text_area :need_screenshot %>
   </div>
   <div class="field">
   	<%#= f.label :login %>
@@ -47,3 +71,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
