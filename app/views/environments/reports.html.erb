@@ -25,19 +25,9 @@
 				
 			</tr>
 		</thead>
-		<!-- <tbody>
-		  <% @test_suites.each do |ts| %>
-			<tr>
-				<td><%= ts.id %></td>
-				<td><%= ts.name %></td>
-				<td class="button-cell"><%#= link_to "List all the reports", {controller: "test_suites", action: "test_cases", id: ts.id }, "data-toggle" => "modal", "data-target" => "#cases", class: "btn btn-default btn-sm", remote: true %>
-					<%#= link_to "Edit", edit_test_suite_path(ts.id), class: "btn btn-default btn-sm" %>
-					<%#= link_to "Schedule", {controller: "test_suites", action: "tests_ran", id: ts.id }, class: "btn btn-default btn-sm", "data-toggle" => "modal", "data-target" => "#cases", remote: true %>
-				</td>
-			</tr>
-		  <% end %>
-		</tbody> -->
+
 		<tbody>
+		<% if @schedule.present? %>
 		  <% @schedule.each do |s| %>
 			<tr>
 				<td><%= s.id %></td>
@@ -50,6 +40,7 @@
 				</td>
 			</tr>
 		  <% end %>
+		<% end %>
 		</tbody>
 	</table>
 	
