@@ -9,11 +9,13 @@
       <th>Input value</th>
       <th>Action</th>
       <th>Action url</th>
+      <th>Description</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
+    <% if !@test_cases.nil? %>
     <% @test_cases.each do |test_case| %>
       <tr>
         <td><%= test_case.field_name %></td>
@@ -22,10 +24,12 @@
         <td><%= test_case.input_value %></td>
         <td><%= test_case.action %></td>
         <td><%= test_case.action_url %></td>
+        <td><%= test_case.description%></td>
         <td><%= link_to 'Show', test_case %>
         <%= link_to 'Edit', edit_test_case_path(test_case) %>
         <%= link_to 'Destroy', test_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

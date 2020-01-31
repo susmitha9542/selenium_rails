@@ -4,10 +4,22 @@ class TestCasesController < ApplicationController
   # GET /test_cases
   # GET /test_cases.json
   def index
-    if params[:id].present?
-      @test_cases = TestSuite.find(params[:id]).test_cases
+    logger.debug("SESSION OBJECT #{session[:enviro_id].inspect}")
+    id = session[:enviro_id]
+    @t = TestSuite.where(environment_id: id).pluck(:id)
+    logger.debug("TEST SUITE #{@t.inspect}")
+    if @t.present?
+      @test_cases = Array.new
+      @t.each do |t_id|
+        tc_ids = TestSuite.find(t_id).test_cases
+        if tc_ids.present?
+          @ids = tc_ids.pluck(:id) 
+          @test_cases = TestCase.find(@ids)
+        logger.debug("TEST SUITES ARE #{@test_cases}")
+      end
+      end
     else
-      @test_cases = TestCase.all
+      
     end
   end
 
