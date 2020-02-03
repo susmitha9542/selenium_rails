@@ -28,6 +28,7 @@ class ResultCasesController < ApplicationController
 
     respond_to do |format|
       if @result_case.save
+        UserMailer.with(user: @user).send_email.deliver_later
         format.html { redirect_to @result_case, notice: 'Result case was successfully created.' }
         format.json { render :show, status: :created, location: @result_case }
       else
