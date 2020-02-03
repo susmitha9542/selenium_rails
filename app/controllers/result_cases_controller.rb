@@ -69,6 +69,6 @@ class ResultCasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_case_params
-      params.require(:result_case).permit(:rd_id, :test_case_id, :result_suite_id)
+      params.require(:result_case).permit(:rd_id, :test_case_id, :result_suite_id, :screenshot_file_location, :scheduler_id, :error_description, :email_sent)
     end
 end
