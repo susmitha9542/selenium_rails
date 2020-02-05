@@ -97,6 +97,7 @@ class EnvironmentsController < ApplicationController
   end
   
   def run_suites
+    logger.debug "COMMIT #{params[:commit]}"
     if params[:suite].present?
       params[:suite].each do |s|
         logger.debug "CHECK CHECK SUITE SUITE #{s}"
@@ -107,6 +108,9 @@ class EnvironmentsController < ApplicationController
         schedule.status = "READY"
         schedule.save!
         logger.debug "#{suite.id} #{suite.name}"
+        if params[:commit] == "Schedule Now"
+          system "/home/newprod/SeleniumWebTester/start.sh"
+        end
         # RUNSUITELOGIC put logic for running each test suite here.
       end
     else
@@ -127,6 +131,6 @@ class EnvironmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def environment_params
-      params.require(:environment).permit(:name, :url, :username, :password, :login_field, :password_field, :action_button,:default_suite_id, test_suite_ids: [])
+      params.require(:environment).permit(:name, :url, :username, :password, :login_field, :password_field, :action_button,:default_suite_id, :user_emails, :selenium_tester_url, test_suite_ids: [])
     end
 end
