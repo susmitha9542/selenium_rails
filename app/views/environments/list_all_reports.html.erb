@@ -1,4 +1,4 @@
-<h3 style="text-align:center;">Test Cases for <%#= @test_suite.name %></h3>
+<h3 style="text-align:center;"></h3>
 <table id="sch-cases" style="width:100%">
 	<thead>
 		<tr>
@@ -14,7 +14,8 @@
 	<tbody>
 	  <% @result_cases.each do |rc| %>
 		<tr>
-  			<td><%= link_to CaseSuite.where(test_case_id: rc.test_case_id).pluck(:sequence).join(','), modal_show_path, remote: true, data: { target: '#modal-show', toggle: 'modal' }, class: 'nav-link' %></td>
+        <% seq = CaseSuite.where(test_case_id: rc.test_case_id).pluck(:sequence).join(',')%>
+  			<td><%#= link_to seq, modal_show_path, remote: true, data: { target: '#modal-show', toggle: 'modal' }, class: 'nav-link' %><%= seq %></td>
         <% if rc.rd_id == 1%>
           <td>Completed</td>
         <% else %>
@@ -40,8 +41,11 @@
 </div>
 
 <script>
-  $("#sch-cases").dataTable({
-    "iDisplayLength": 100
+  $("#sch-cases").DataTable({
+    "iDisplayLength": 100,
+        buttons: [
+            'excel', 'pdf', 'print'
+        ]
     }
   );
   </script>
