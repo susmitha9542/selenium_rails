@@ -82,17 +82,26 @@ class EnvironmentsController < ApplicationController
   def reports
     logger.debug("SESSION OBJECT #{session[:enviro_id].inspect}")
     id = session[:enviro_id]
+    #@sch = Array.new
+    @schedule = Array.new
     @test_suites = TestSuite.where(environment_id: id).pluck(:id)
     if @test_suites.present?
       logger.debug(" TEST SUITE #{@test_suites} ")
       @test_suites.each do |ts_id|
-        @schedule = Array.new
-        sch = Scheduler.where(test_suite_id: ts_id).pluck(:id)
-        sch.each do |id|
+        sch_id = Scheduler.where(test_suite_id: ts_id).pluck(:id)
+        if !sch_id.blank?
+          #@sch << sch_id
+        
+        logger.debug("SCHEDULERS #{sch_id}")
+      
+        sch_id.each do |id|
+          
           @schedule << Scheduler.find(id)
           logger.debug(" TEST SUITE #{@schedule.inspect}")
         end
-      end
+        end
+      
+    end
     end
   end
   
