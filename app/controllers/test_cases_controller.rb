@@ -11,11 +11,16 @@ class TestCasesController < ApplicationController
     if @t.present?
       @test_cases = Array.new
       @t.each do |t_id|
-        tc_ids = TestSuite.find(t_id).test_cases
+        tc_ids = TestSuite.find(t_id).test_cases.pluck(:id)
+        logger.debug("TEST CASES #{tc_ids.inspect}")
         if tc_ids.present?
-          @ids = tc_ids.pluck(:id) 
-          @test_cases = TestCase.find(@ids)
-        logger.debug("TEST SUITES ARE #{@test_cases}")
+          tc_ids.each do |id|
+          #@ids = tc_ids.pluck(:id) 
+          #logger.debug("TEST SUITES IDS #{@ids}")
+          #@test_cases = TestCase.find(@ids)
+            @test_cases << TestCase.find(id)
+            logger.debug("TEST SUITES ARE #{@test_cases.count}")
+          end
       end
       end
     else
