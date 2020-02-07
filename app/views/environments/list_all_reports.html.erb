@@ -23,7 +23,7 @@
         <% end -%>
         <td><%= rc.created_at %></td>
   			<td><%= rc.updated_at %></td>
-        <td></td>
+        <td><%= rc.error_description %></td>
         <% if !rc.screenshot_file_location.nil? %>
           <td><%= link_to rc.screenshot_file_location,  {controller: "environments", action: "images", file_name: rc.screenshot_file_location }, target: :_blank %></td>
         <% else %>
@@ -43,8 +43,9 @@
 <script>
   $("#sch-cases").DataTable({
     "iDisplayLength": 100,
+    dom: 'Bfrtip',
         buttons: [
-            'excel', 'pdf', 'print'
+            'excelHtml5'
         ]
     }
   );
