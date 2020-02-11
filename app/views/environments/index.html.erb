@@ -6,7 +6,7 @@
       <th>Url</th>
       <th>Username</th>
       <th>Password</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -19,6 +19,7 @@
         <td><%= link_to 'Show', environment %></td>
         <td><%= link_to 'Edit', edit_environment_path(environment) %></td>
         <td><%= link_to 'Destroy', environment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Custom Commands', edit_custom_command_path(environment)%></td>
       </tr>
     <% end %>
   </tbody>

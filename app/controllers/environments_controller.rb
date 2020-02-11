@@ -19,6 +19,7 @@ class EnvironmentsController < ApplicationController
 
   # GET /environments/1/edit
   def edit
+    @custom = @environment.custom_commands.new
   end
 
   # POST /environments
@@ -40,6 +41,12 @@ class EnvironmentsController < ApplicationController
   # PATCH/PUT /environments/1
   # PATCH/PUT /environments/1.json
   def update
+    custom_command_params = params[:custom_command]
+    logger.debug("PARAMS OF CUSTOM COMMAND #{custom_command_params.inspect}")
+    if custom_command_params.present?
+      @custom.update(custom_command_params)
+      logger.debug("IN THE ENV UPDATE CUSTOM COMMAND #{@custom.inspect}")
+    end
     respond_to do |format|
       if @environment.update(environment_params)
         format.html { redirect_to @environment, notice: 'Environment was successfully updated.' }
@@ -48,6 +55,7 @@ class EnvironmentsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @environment.errors, status: :unprocessable_entity }
       end
+
     end
   end
 

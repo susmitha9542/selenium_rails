@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  environment_id: 
+  name: 
+  command: 
+  parameters: 
+
+two:
+  environment_id: 
+  name: 
+  command: 
+  parameters: 

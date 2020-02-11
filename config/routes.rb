@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :test_cases
 
+  resources :custom_commands
+
   
   match '/home', to: "welcome#home", via: ["get", "post"]
   
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
   match "/reports", to: "environments#reports", via: "get"
 
   match "run_suites", to: "environments#run_suites", via: "get"
+
+  match "custom_commands", to: "custom_commands#custom_commands", via: "get"
   
   match "run_suites", to: "environments#run_suites", via: "post"
   
@@ -41,6 +45,8 @@ Rails.application.routes.draw do
   match "import_suite", to: "test_suites#import_suite", via: "get"
 
   match "images", to: "environments#images", via: "get"
+
+  match 'export_results', to: "test_cases#export_results", via: "get"
   
   post "import" => "test_suites#import"
 

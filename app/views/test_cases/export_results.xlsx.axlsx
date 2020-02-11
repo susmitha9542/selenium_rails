@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "export_results") do |sheet|
+    sheet.add_row ["ID", "Filed Name"]
+    @results.each do |result|
+        sheet.add_row [result.id, result.name]
+    end
+end

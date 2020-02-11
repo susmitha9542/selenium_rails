@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
-  def send_email
-    @user = current_user
+  def send_email(user)
+    @user = user
     mail(to: @user.email, subject: 'Check your Results')
   end
 end

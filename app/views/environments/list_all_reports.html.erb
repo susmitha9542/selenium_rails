@@ -40,12 +40,18 @@
   </div>
 </div>
 
+
+<%=
+  link_to 'Download as Excel',
+  test_cases_path(format: :xlsx)
+%>
+
 <script>
   $("#sch-cases").DataTable({
     "iDisplayLength": 100,
     dom: 'Bfrtip',
         buttons: [
-            'excelHtml5'
+            'excel'
         ]
     }
   );

@@ -6,6 +6,7 @@ class TestCasesController < ApplicationController
   def index
     logger.debug("SESSION OBJECT #{session[:enviro_id].inspect}")
     id = session[:enviro_id]
+    @tc = TestSuite.where(environment_id: id)
     @t = TestSuite.where(environment_id: id).pluck(:id)
     logger.debug("TEST SUITE #{@t.inspect}")
     if @t.present?
@@ -78,6 +79,25 @@ class TestCasesController < ApplicationController
       format.html
       format.js
     end 
+  end
+
+  def export_results
+    #@results = TestSuite.find(params[:id]).test_cases
+    @results = TestSuite.all
+    respond_to do |format|
+      #format.csv { send_data @results.to_csv }
+      format.xlsx #{render xlsx: 'export_results'}
+    end
+    #render xlsx: "test_cases/export_results.xlsx.axlsx"
+  end
+
+  def self.to_csv  
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |result|
+        csv << result.attributes.values_at(*column_names)
+      end
+    end
   end
 
   # DELETE /test_cases/1

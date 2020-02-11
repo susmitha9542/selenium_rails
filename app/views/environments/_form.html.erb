@@ -10,35 +10,54 @@
       </ul>
     </div>
   <% end %>
+  <div id="centerbox">
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_area :name, placeholder:"Name of your application" %>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder:"Name of your application" %>
   </div>
   <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_area :url, placeholder:"please enter your application login url" %>
+    <%= f.label :url %>
+    <%= f.text_field :url, placeholder:"please enter your application login url" %>
   </div>
+  </div>
+  <h3>LOGIN DETAILS</h3>
+  <div id="loginbox">
   <div class="field">
-    <%= f.label :username %><br>
+    <%= f.label :username %>
     <%= f.text_field :username, placeholder:"username/email" %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
+    <%= f.label :password %>
     <%= f.text_field :password, placeholder:"password" %>
   </div>
   <div class="field">
-    <%= f.label :login_field %><br>
-    <%= f.text_area :login_field, placeholder:"Inspect your application username and enter the id of that field" %>
+    <%= f.label :login_field %>
+    <%= f.text_field :login_field, placeholder:"Inspect your application username and enter the id of that field" %>
   </div>
   <div class="field">
-    <%= f.label :password_field %><br>
-    <%= f.text_area :password_field, placeholder:"Inspect your application password field and enter the id " %>
+    <%= f.label :password_field %>
+    <%= f.text_field :password_field, placeholder:"Inspect your application password field and enter the id " %>
   </div>
   <div class="field">
-    <%= f.label :action_button %><br>
-    <%= f.text_area :action_button, placeholder:"Inspect your application login button field and look for name and enter it. " %>
+    <%= f.label :action_button %>
+    <%= f.text_field :action_button, placeholder:"Inspect your application login button field and look for name and enter it. " %>
   </div>
+  <div class="field">
+    <%= f.label :user_emails %>
+    <%= f.text_area :user_emails, placeholder:"please enter email addresses to which you want to send emails after our jobs got finished " %>
+  </div>
+  <div class="field">
+    <%= f.label :selenium_webtester_path %>
+    <%= f.text_field :selenium_tester_url, placeholder:"Enter the path of your Selenium Webtester " %>
+  </div>
+  </div>
+  <br>
+   
+  <div id="submit">
   <div class="actions">
     <%= f.submit %>
   </div>
+  </div>
 <% end %>
+
+

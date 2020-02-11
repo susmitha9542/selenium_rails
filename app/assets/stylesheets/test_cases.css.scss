@@ -18,3 +18,47 @@
     float:right;  
     width:25%;  
   } 
+
+  #centerbox{ 
+    float:left;
+    margin-left: 30%;  
+    width:70%;  
+  } 
+
+  #loginbox{ 
+    float:left;
+    margin-left: 30%;  
+    width:40%;  
+    background-color: lightgrey;
+    border: 5px solid green;
+    padding: 20px;
+  }
+
+  #custombox{ 
+    float:left;
+    margin-left: 30%;  
+    width:40%;  
+    background-color: lightgrey;
+    border: 5px solid black;
+    padding: 20px;
+  }  
+
+  label {
+    width:180px;
+    clear:left;
+    text-align:right;
+    padding-right:10px;
+  }
+
+  input, label {
+    float:left;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-left: 43%;
+  }
+
+  #submit{
+    display: inline;
+  }
