@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   match "images", to: "environments#images", via: "get"
 
   match 'export_results', to: "test_cases#export_results", via: "get"
+
+  match 'export', to: "test_cases#export", via: "get"
   
   post "import" => "test_suites#import"
 

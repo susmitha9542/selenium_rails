@@ -85,17 +85,24 @@ class TestCasesController < ApplicationController
     #@results = TestSuite.find(params[:id]).test_cases
     @results = TestSuite.all
     respond_to do |format|
-      #format.csv { send_data @results.to_csv }
-      format.xlsx #{render xlsx: 'export_results'}
+      format.html
+      format.csv do#{ send_data @results.to_csv, filename: "result-#{Date.today}.csv" }
+        headers['Content-Disposition'] = "attachment; filename=\"#{Date.today}.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+      #format.xlsx #{render xlsx: 'export_results'}
     end
     #render xlsx: "test_cases/export_results.xlsx.axlsx"
   end
 
-  def self.to_csv  
-    CSV.generate do |csv|
-      csv << column_names
-      all.each do |result|
-        csv << result.attributes.values_at(*column_names)
+  def export
+    Rails.logger.debug("PARRAAAAAAAAAAAAAAAMSSSSSSSSSSSS #{params.inspect}")
+    @results = TestSuite.find(params[:test_suite_ids]).test_cases
+    respond_to do |format|
+      format.html
+      format.csv do#{ send_data @results.to_csv, filename: "result-#{Date.today}.csv" }
+        headers['Content-Disposition'] = "attachment; filename=\"#{DateTime.now}.csv\""
+        headers['Content-Type'] ||= 'text/csv'
       end
     end
   end

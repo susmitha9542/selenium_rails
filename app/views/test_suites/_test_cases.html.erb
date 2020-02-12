@@ -25,3 +25,6 @@
 	  <% end %>
 	</tbody>
 </table>
+
+<%= link_to 'Export to CSV', export_path(test_suite_ids: @test_suite.id, format: 'csv'), class: "btn btn-default btn-sm"%>
+<%= hidden_field_tag :id, @test_suite.id  %>
