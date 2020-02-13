@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
   match 'export_results', to: "test_cases#export_results", via: "get"
 
+  match 'download_results', to: "environments#download_results", via: "get"
+
   match 'export', to: "test_cases#export", via: "get"
   
   post "import" => "test_suites#import"

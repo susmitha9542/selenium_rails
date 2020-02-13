@@ -87,6 +87,10 @@ class EnvironmentsController < ApplicationController
     end
   end
 
+  def download_results
+    
+  end
+
   def reports
     logger.debug("SESSION OBJECT #{session[:enviro_id].inspect}")
     id = session[:enviro_id]
