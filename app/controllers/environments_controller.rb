@@ -88,7 +88,20 @@ class EnvironmentsController < ApplicationController
   end
 
   def download_results
-    
+    logger.debug("PARAMS FROM DOWNLOAD #{params.inspect}")
+    ids = params[:result_cases]
+    @rc_cases = Array.new
+    ids.each do |rc|
+      @rc_cases << ResultCase.find(rc)
+    end
+    respond_to do |format|
+      format.html
+      format.csv do#{ send_data @results.to_csv, filename: "result-#{Date.today}.csv" }
+        headers['Content-Disposition'] = "attachment; filename=\"reports-#{Date.today}.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+      #format.xlsx #{render xlsx: 'export_results'}
+    end
   end
 
   def reports
