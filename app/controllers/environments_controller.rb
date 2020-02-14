@@ -94,6 +94,7 @@ class EnvironmentsController < ApplicationController
     ids.each do |rc|
       @rc_cases << ResultCase.find(rc)
     end
+    logger.debug("RC IN RESULTS ENVIRO #{@rc_cases.inspect}")
     respond_to do |format|
       format.html
       format.csv do#{ send_data @results.to_csv, filename: "result-#{Date.today}.csv" }

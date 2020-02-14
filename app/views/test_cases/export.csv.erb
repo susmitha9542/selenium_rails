@@ -1,5 +1,5 @@
-<%- headers = ['field_name', 'xpath','field_type', 'read_element', 'input_value', 'action', 'action_url' ] -%>
+<%- headers = ['field_name', 'xpath','field_type', 'read_element', 'input_value', 'action', 'action_url', 'sleeps', 'description', 'new_tab', 'base_url' ] -%>
 <%= CSV.generate_line headers %>
 <%- @results.each do |result| -%>
-<%= CSV.generate_line([result.field_name, result.xpath, result.field_type, result.read_element, result.input_value, result.action, result.action_url]) -%>
+<%= CSV.generate_line([result.field_name, result.xpath, result.field_type, result.read_element, result.input_value, result.action, result.action_url, result.sleeps, result.description, result.new_tab, result.base_url]) -%>
 <%- end -%>
