@@ -35,6 +35,7 @@ gem 'rubyzip', '~> 1.2'
 gem 'iconv', '~> 1.0.3'
 gem 'roo'
 gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'recaptcha', require: "recaptcha/rails" 
 #gem 'axlsx', '~> 2.0'
 #gem 'axlsx_rails'
 gem 'caxlsx_rails'

@@ -37,6 +37,12 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+  #recaptcha setings
+
+  RECAPTCHA_PUBLIC_KEY= '6LcYBNoUAAAAADTnUfbLyehtbHpIt02B3G0f-alD'
+
+  RECAPTCHA_PRIVATE_KEY= '6LcYBNoUAAAAANPBXHeGjQfiUerKD3SjnIrq73fZ'
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
