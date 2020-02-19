@@ -1,5 +1,5 @@
-<%- headers = ['test_case_id', 'result_suite_id','scheduler_id', 'error_description' ] -%>
+<%- headers = ['scheduler_id', 'status','Start time' , 'End Time' ,'error_description', 'screenshot_file_location' ] -%>
 <%= CSV.generate_line headers %>
 <%- @rc_cases.each do |result| -%>
-<%= CSV.generate_line([result.test_case_id, result.result_suite_id, result.scheduler_id, result.error_description]) -%>
+<%= CSV.generate_line([ result.scheduler_id, result.rd_id, result.created_at ,result.updated_at,result.error_description, result.screenshot_file_location]) -%>
 <%- end -%>
