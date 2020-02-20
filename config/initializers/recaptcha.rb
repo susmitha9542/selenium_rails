@@ -1,5 +1,5 @@
 Recaptcha.configure do |config|
-config.site_key = 'RECAPTCHA_PUBLIC_KEY'
-config.secret_key = 'RECAPTCHA_PRIVATE_KEY'
+config.site_key = '6LdUvdoUAAAAAHMKJk73RQjqAkucQKzFurX4xsPp'
+config.secret_key = '6LdUvdoUAAAAAIJUxXIpzXAH-qvWNT2cNNf6Xc1U'
 config.proxy = 'http://www.google.com/recaptcha/api/verify'
 end
