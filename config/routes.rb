@@ -54,59 +54,16 @@ Rails.application.routes.draw do
   
   post "import" => "test_suites#import"
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+ 
+  #Browser Extension Apis
+  match '/api/login', :to => 'browser_extension#login_user',  via: [:post]
+  match '/api/logout', :to => 'browser_extension#logout_user',  via: [:get]
+  match '/api/get_environments', :to => 'browser_extension#get_environments',  via: [:get]
+  match '/api/create_test_suite', :to => 'browser_extension#create_test_suite',  via: [:post]
+  match '/api/get_test_suites', :to => 'browser_extension#get_test_suites',  via: [:get]
+  match '/api/create_test_case', :to => 'browser_extension#create_test_case',  via: [:post]
+  match '/api/update_test_case', :to => 'browser_extension#update_test_case',  via: [:post]
+  match '/api/get_test_cases', :to => 'browser_extension#get_test_cases',  via: [:get]
+  match '/api/get_case_detail', :to => 'browser_extension#get_case_detail',  via: [:get]
 end
 

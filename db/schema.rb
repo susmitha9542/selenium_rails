@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_02_11_160456) do
     t.datetime "updated_at"
   end
 
-  create_table "custom_commands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "custom_commands", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "environment_id"
     t.string "name"
     t.text "command"
