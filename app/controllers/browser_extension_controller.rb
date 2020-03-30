@@ -138,13 +138,12 @@ class BrowserExtensionController < ApplicationController
      
       @params = params[:data]
       suite_id = @params[:suite_id]
-      @test_case = TestCase.new(test_case_params(@params[:test_case].except(:case_id, :sequence)))
+      @test_case = TestCase.new(test_case_params(@params[:test_case].except(:case_id)))
       record_saved = false
       if @test_case.save
         @case_suite = CaseSuite.new 
         @case_suite.test_suite_id= suite_id
         @case_suite.test_case_id= @test_case.id
-        @case_suite.sequence=  @params[:test_case][:sequence]
         record_saved = @case_suite.save
       end
 
@@ -169,7 +168,6 @@ class BrowserExtensionController < ApplicationController
   
   def update_test_case
     begin
-      byebug
       @test_case = params[:data][:test_case]
       @test_case["id"] = @test_case[:case_id]
       @case_id = @test_case[:id]
@@ -218,10 +216,10 @@ class BrowserExtensionController < ApplicationController
     begin
       case_id = params[:case_id]
       
-      @detail = TestCase.where(id: case_id).select(:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot).first.as_json
+      @detail = TestCase.where(id: case_id).select(:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab).first.as_json
       
       @detail["case_id"] = case_id
-      @detail["sequence"] = CaseSuite.where(test_case_id: case_id).limit(1).pluck(:sequence).first
+
       
       render json: format_response_json({
         message: 'Case detail retrieved!',
@@ -238,7 +236,7 @@ class BrowserExtensionController < ApplicationController
 
   private 
   def test_case_params(test_case)
-      test_case.permit([:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot ])
+      test_case.permit([:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab ])
   end
 
   def case_suite_params
