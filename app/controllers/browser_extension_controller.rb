@@ -2,7 +2,7 @@ class BrowserExtensionController < ApplicationController
   include FormatConcern
   protect_from_forgery with: :null_session
   before_action :authenticate_user_token
-  skip_before_action :authenticate_user_token, only: [:login_user]
+  skip_before_action :authenticate_user_token, only: [:login_user, :logout_user]
 
   def authenticate_user_token
     #CHECK IF TOKEN IS VALID DATEWISE, ROLEWISE, AND SET CURRENT USER
@@ -13,11 +13,13 @@ class BrowserExtensionController < ApplicationController
         cur_user = {'user_id': token_info[:user_id],'valid_session': valid_session}
     end
 
-    if cur_user.nil?
+    if cur_user.nil? || !cur_user[:valid_session]
+      response.headers["Logout"] = "true";
+      message = cur_user.nil? ? "You are unauthorized from making this request!": "You have been logged out. Please login again." 
       render json: format_response_json({
-        message: 'You are unauthorized from making this request!',
+        message: message,
         status: false
-      })
+      }), status: 401
     end
   end
 
