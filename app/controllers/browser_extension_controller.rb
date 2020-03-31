@@ -141,8 +141,10 @@ class BrowserExtensionController < ApplicationController
       @test_case = TestCase.new(test_case_params(@params[:test_case].except(:case_id)))
       record_saved = false
       if @test_case.save
+        @total_suites = CaseSuite.where(test_suite_id: suite_id).count
         @case_suite = CaseSuite.new 
         @case_suite.test_suite_id= suite_id
+        @case_suite.sequence = @total_suites + 1
         @case_suite.test_case_id= @test_case.id
         record_saved = @case_suite.save
       end
@@ -197,7 +199,7 @@ class BrowserExtensionController < ApplicationController
       suite_id = params[:suite_id]
       case_ids = CaseSuite.where(test_suite_id: suite_id).pluck(:test_case_id)
       
-      @test_cases = TestCase.where("id IN (?)", case_ids).select("id, field_name as name").as_json
+      @test_cases = TestCase.where("id IN (?)", case_ids).select("id, description as name").as_json
       
       render json: format_response_json({
         message: 'Test cases retrieved!',
@@ -217,10 +219,8 @@ class BrowserExtensionController < ApplicationController
       case_id = params[:case_id]
       
       @detail = TestCase.where(id: case_id).select(:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab).first.as_json
-      
       @detail["case_id"] = case_id
 
-      
       render json: format_response_json({
         message: 'Case detail retrieved!',
         status: true,

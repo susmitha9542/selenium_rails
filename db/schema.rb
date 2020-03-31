@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_11_160456) do
+ActiveRecord::Schema.define(version: 2020_03_31_182704) do
 
   create_table "case_suites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "test_case_id"
@@ -99,9 +99,9 @@ ActiveRecord::Schema.define(version: 2020_02_11_160456) do
     t.text "base_url"
     t.text "xpath"
     t.integer "sleeps"
-    t.text "new_tab"
+    t.boolean "new_tab", default: false
     t.text "description"
-    t.text "need_screenshot"
+    t.boolean "need_screenshot", default: false
   end
 
   create_table "test_data", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
