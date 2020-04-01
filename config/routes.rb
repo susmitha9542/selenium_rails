@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   match '/api/login', :to => 'browser_extension#login_user',  via: [:post]
   match '/api/logout', :to => 'browser_extension#logout_user',  via: [:get]
   match '/api/get_environments', :to => 'browser_extension#get_environments',  via: [:get]
+  match '/api/get_custom_commands', :to => 'browser_extension#get_custom_commands',  via: [:get]
   match '/api/create_test_suite', :to => 'browser_extension#create_test_suite',  via: [:post]
   match '/api/get_test_suites', :to => 'browser_extension#get_test_suites',  via: [:get]
   match '/api/create_test_case', :to => 'browser_extension#create_test_case',  via: [:post]

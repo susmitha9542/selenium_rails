@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_182704) do
+ActiveRecord::Schema.define(version: 2020_04_01_171642) do
 
   create_table "case_suites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "test_case_id"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_182704) do
     t.boolean "new_tab", default: false
     t.text "description"
     t.boolean "need_screenshot", default: false
+    t.integer "custom_command_id", default: 0
   end
 
   create_table "test_data", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|

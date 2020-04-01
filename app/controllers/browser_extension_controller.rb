@@ -89,6 +89,23 @@ class BrowserExtensionController < ApplicationController
       })
     end
   end
+
+  def get_custom_commands
+    begin
+      environment_id = params[:environment_id]
+      @custom_commands = CustomCommand.where(environment_id: environment_id).select(:id, :name, :parameters).as_json
+      render json: format_response_json({
+        message: 'Custom commands retrieved!',
+        status: true,
+        result: @custom_commands
+      })
+    rescue
+      render json: format_response_json({
+        message: 'Failed to retrieve custom commands!',
+        status: false
+      })
+    end
+  end
   
   def create_test_suite
     begin
@@ -135,7 +152,6 @@ class BrowserExtensionController < ApplicationController
   
   def create_test_case
     begin
-     
       @params = params[:data]
       suite_id = @params[:suite_id]
       @test_case = TestCase.new(test_case_params(@params[:test_case].except(:case_id)))
@@ -199,7 +215,7 @@ class BrowserExtensionController < ApplicationController
       suite_id = params[:suite_id]
       case_ids = CaseSuite.where(test_suite_id: suite_id).pluck(:test_case_id)
       
-      @test_cases = TestCase.where("id IN (?)", case_ids).select("id, description as name").as_json
+      @test_cases = TestCase.where("id IN (?)", case_ids).select("id, description as name, custom_command_id").as_json
       
       render json: format_response_json({
         message: 'Test cases retrieved!',
@@ -236,7 +252,7 @@ class BrowserExtensionController < ApplicationController
 
   private 
   def test_case_params(test_case)
-      test_case.permit([:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab ])
+      test_case.permit([:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab,:custom_command_id ])
   end
 
   def case_suite_params
