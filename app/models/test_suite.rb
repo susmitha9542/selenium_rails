@@ -3,6 +3,7 @@ require 'csv'
 class TestSuite < ActiveRecord::Base
   acts_as_xlsx
   belongs_to :environment
+  has_many :case_suites
   has_and_belongs_to_many :test_cases, join_table: :case_suites
   has_many :schedulers
   

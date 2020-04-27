@@ -1,4 +1,5 @@
 class TestCase < ActiveRecord::Base
+  has_many :case_suites
   has_and_belongs_to_many :test_suites, join_table: :case_suites
 
 

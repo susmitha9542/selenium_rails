@@ -97,13 +97,10 @@ class TestCasesController < ApplicationController
 
   def export
     Rails.logger.debug("PARRAAAAAAAAAAAAAAAMSSSSSSSSSSSS #{params.inspect}")
-    @results = TestSuite.find(params[:test_suite_ids]).test_cases
+    @results = TestSuite.find(params[:test_suite_ids]).test_cases.joins(:case_suites).select("test_cases.*", "case_suites.sequence")
     respond_to do |format|
       format.html
-      format.csv do#{ send_data @results.to_csv, filename: "result-#{Date.today}.csv" }
-        headers['Content-Disposition'] = "attachment; filename=\"#{DateTime.now}.csv\""
-        headers['Content-Type'] ||= 'text/csv'
-      end
+      format.csv { send_data prep_csv(@results), filename: "test_suite_#{TestSuite.find(params[:test_suite_ids]).name.sub(" ", "")}_#{Time.now.strftime("%m/%d/%Y_%I:%M%p")}.csv"}
     end
   end
 
@@ -118,6 +115,16 @@ class TestCasesController < ApplicationController
   end
 
   private
+    # method to add custom columns in CSV
+    def prep_csv(results)
+      wanted_columns = ["field_name","xpath","field_type","read_element","input_value","action","action_url","sleeps","description","new_tab","base_url","sequence"]
+      CSV.generate do |csv|
+        csv << wanted_columns
+        results.each do |result|
+          csv << result.attributes.values_at(*wanted_columns)
+        end
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_test_case
       @test_case = TestCase.find(params[:id])

@@ -14,7 +14,7 @@
 			<td><%= s.scheduled_date %></td>
 			<td><%= s.completed_date %></td>
 			<td><%= s.status %></td>
-			<td>Results Link</td>
+			<td><%= link_to "Results Link", list_all_reports_path(params: {id: s.id}), method: :get, target: "_blank" %></td>
 		</tr>
 	  <% end %>
 	</tbody>
