@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_171642) do
+ActiveRecord::Schema.define(version: 2020_05_05_192221) do
 
   create_table "case_suites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "test_case_id"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_171642) do
     t.integer "environment_id"
     t.boolean "dependency", default: false
     t.text "base_url"
+    t.integer "base_suite_id"
   end
 
   create_table "testing_cases", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|

@@ -1,4 +1,4 @@
-class CreateSchedulers < ActiveRecord::Migration
+class CreateSchedulers < ActiveRecord::Migration[6.0]
   def change
     create_table :schedulers do |t|
       t.integer :test_suite_id

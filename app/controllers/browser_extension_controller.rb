@@ -113,6 +113,7 @@ class BrowserExtensionController < ApplicationController
       @suite = TestSuite.new
       @suite.environment_id = @params[:environment_id]
       @suite.name = @params[:suite_name]
+      @suite.base_suite_id= @params[:base_suite_id]
       if(@suite.save)
         render json: format_response_json({
           message: 'Test suite created!',
@@ -260,6 +261,6 @@ class BrowserExtensionController < ApplicationController
   end
 
   def test_suite_params
-    params.require(:test_suite).permit([:name, :environment_id ])
+    params.require(:test_suite).permit([:name, :environment_id, :base_suite_id ])
   end
 end
