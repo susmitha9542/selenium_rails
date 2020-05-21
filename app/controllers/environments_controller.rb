@@ -133,7 +133,6 @@ class EnvironmentsController < ApplicationController
   
   def run_suites
     logger.debug "COMMIT #{params[:commit]}"
-    byebug
     if params[:suite].present?
       params[:suite].each do |s|
         logger.debug "CHECK CHECK SUITE SUITE #{s}"

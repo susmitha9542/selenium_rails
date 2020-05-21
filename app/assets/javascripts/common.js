@@ -48,8 +48,8 @@ $(function () {
         },
         showHtmlDialog: function (title, body, closeAction = null) {
             var curTimeString = Date.now();
-            var dialogID = "modalDialog" + curTimeString;
-            var closeID = "closeDiv" + curTimeString;
+            var dialogID = "modalDialog_" + curTimeString;
+            var closeID = "closeDiv_" + curTimeString;
             var modalHtml = `<div class="modal fade modal-dialog-container" id="${dialogID}" role="dialog">
                                         <div class="modal-dialog err-pop" style="">
                                             <div class="modal-content" style="width: auto !important;">
@@ -83,12 +83,14 @@ $(function () {
             $(modalHtml)
                 .appendTo(document.body)
                 .modal({ show: true, backdrop: 'static', keyboard: false })
-                .on("click", `${closeID}`, function () {
+                .on("click", `#${closeID}`, function () {
                     removeConfirmAction();
                     if (closeAction) closeAction();
                 });
+
+            return dialogID;
         },
-        hideHtmlDialog: function () {
+        hideHtmlDialog: function (dialogID) {
             var dialog = $(`#${dialogID}`);
             if (dialog) {
                 dialog.modal("hide");

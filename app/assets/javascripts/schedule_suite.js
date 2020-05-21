@@ -5,6 +5,13 @@ $(document).ready(function () {
         return `${window.location.origin}/${partialUrl}`;
     }
 
+    function getFormattedDate(date) {
+        if (date == null) {
+            return "";
+        }
+        return new Date(date).toISOString().split("T")[0];
+    }
+
     function initializeDataTable(tableID, suiteID) {
         var processing = false;
         var serverSide = true;
@@ -15,7 +22,12 @@ $(document).ready(function () {
         var searchDelay = 1000;
         var lengthMenu = [10, 20, 50];
         var pagingType = "full_numbers";
+        if (table != null) {
+            $(tableID).DataTable({ destroy: true });
+            table.destroy();
+        }
         table = $(tableID).DataTable({
+            "destroy": true,
             "processing": processing,
             "serverSide": serverSide,
             "searching": searchable,
@@ -35,8 +47,16 @@ $(document).ready(function () {
             "columns": [
                 { "data": "id" },
                 { "data": "name" },
-                { "data": "start_date" },
-                { "data": "end_date" },
+                {
+                    "data": "start_date", "render": function (data, type, row) {
+                        return getFormattedDate(data);
+                    }
+                },
+                {
+                    "data": "end_date", "render": function (data, type, row) {
+                        return getFormattedDate(data);
+                    }
+                },
                 { "data": "time" },
                 {
                     "defaultContent": `<div>
@@ -93,6 +113,8 @@ $(document).ready(function () {
             if (data != null) {
                 Object.assign(model, data);
             }
+            model.start_date = getFormattedDate(model.start_date);
+            model.end_date = getFormattedDate(model.end_date);
 
             var forUpdate = model.id > 0;
             var formHtml = `<form id="scheduleForm" style="min-height:250px;">
@@ -149,7 +171,7 @@ $(document).ready(function () {
             </div>
           </form>`;
 
-            $().showHtmlDialog(
+            var dialogID = $().showHtmlDialog(
                 forUpdate ? "Update Schedule" : "Create new Schedule",
                 formHtml, () => {
                     var item = $(tableID).find(".selected");
@@ -165,17 +187,25 @@ $(document).ready(function () {
 
                 var dataToSave = $().getFormData(form, getDefaultSchedule(suiteID));
 
-                createNewSchedule(suiteID, dataToSave);
+                createNewSchedule(suiteID, dataToSave, dialogID);
             });
         }
 
-        $("#btnAddNew").on('click', function () {
+        $("#btnAddNew").off().on('click', function () {
             showScheduleForm(null);
         });
     }
 
+    function getFormattedTime(curDate) {
+        curDate.setMilliseconds(Math.round(curDate.getMilliseconds() / 1000) * 1000);
+        curDate.setSeconds(Math.round(curDate.getSeconds() / 60) * 60);
+        curDate.setMinutes(Math.round(curDate.getMinutes() / 15) * 15);
+        return curDate.toTimeString().substring(0, 5);
+    }
+
     function getDefaultSchedule(suiteID) {
-        var curTime = "10:00";
+        var curTime = getFormattedTime(new Date());
+
         var tomorrowDate = new Date();
         tomorrowDate.setDate(tomorrowDate.getDate() + 1)
         return {
@@ -188,7 +218,7 @@ $(document).ready(function () {
         };
     }
 
-    function createNewSchedule(suiteID, data = null) {
+    function createNewSchedule(suiteID, data = null, dialogID = null) {
         var dataToSave = getDefaultSchedule(suiteID);
         var forUpdate = false;
         var scheduleImmediately = true;
@@ -207,11 +237,15 @@ $(document).ready(function () {
                 if (item) {
                     item.removeClass("selected");
                 }
+                $().showMessage("Success", "Schedule updated!");
             }
             else {
+                $().showMessage("Success", "Schedule created!");
                 $(tableID).dataTable().api().row.add(data).draw();
             }
-            $().hideHtmlDialog();
+            if (dialogID != null) {
+                $().hideHtmlDialog(dialogID);
+            }
         }, (error) => {
             $().showMessage("Error", error);
             var item = $(tableID).find(".selected");
@@ -221,17 +255,18 @@ $(document).ready(function () {
         });
     }
 
-    $("#btnScheduleNow").on('click', function (e) {
+    $(".btn-schedule-now").on('click', function (e) {
         e.preventDefault();
         var suiteID = $(this).data("id");
         createNewSchedule(suiteID);
     });
 
-    $("#btnScheduleLater").on('click', function (e) {
+    $(".btn-schedule-later").on('click', function (e) {
         e.preventDefault();
         var suiteID = $(this).data("id");
         var suiteName = $(this).data("name");
 
+        var tableID
         var html = `<div>
             <div style="display:flex; justify-content: flex-end; padding: 5px;">
                 <button id="btnAddNew" class="btn btn-primary btn-sm">Add New</button>
@@ -244,6 +279,7 @@ $(document).ready(function () {
                         <th>Start Date </th>
                         <th>End Date</th>
                         <th>Time</th>
+                        <th>Action</th>
                      </tr>
                 </thead>
             </table>
@@ -252,7 +288,6 @@ $(document).ready(function () {
             suiteName,
             html
         );
-
         initializeDataTable("#scheduleTable", suiteID);
     });
 });

@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   match '/api/get_case_detail', :to => 'browser_extension#get_case_detail',  via: [:get]
 
   match '/suite_schedule/create_suite_schedule', :to => 'suite_schedule#create_suite_schedule',  via: [:post]
-  match '/suite_schedule/get_suite_schedules', :to => 'suite_schedule#get_suite_schedules',  via: [:get]
+  match '/suite_schedule/get_suite_schedules', :to => 'suite_schedule#get_suite_schedules',  via: [:post]
   match '/suite_schedule/update_suite_schedule', :to => 'suite_schedule#update_suite_schedule',  via: [:post]
   match '/suite_schedule/delete_suite_schedule', :to => 'suite_schedule#delete_suite_schedule',  via: [:get]
 end

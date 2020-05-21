@@ -4,7 +4,6 @@ class SuiteScheduleController < ApplicationController
 
     def create_suite_schedule
         begin
-            byebug
             @suite_schedule = SuiteSchedule.new(suite_schedule_params(params[:suite_schedule]).except(:id))
              if @suite_schedule.save
                 schedule_immediately = params[:schedule_immediately]
@@ -13,7 +12,8 @@ class SuiteScheduleController < ApplicationController
                 end
                 render json: format_response_json({
                     message: 'Suite scheduled succesfully!',
-                    status: true
+                    status: true,
+                    result: @suite_schedule
                 })
              else 
                 render json: format_response_json({
@@ -31,7 +31,6 @@ class SuiteScheduleController < ApplicationController
 
     def get_suite_schedules
         begin
-            byebug
             search_term = params[:search][:value]
             skip = params[:start]
             take = params[:length]
@@ -63,12 +62,13 @@ class SuiteScheduleController < ApplicationController
     def update_suite_schedule
         begin
             @suite_schedule = params[:suite_schedule]
-            success = SuiteSchedule.find(@suite_schedule.id).update_attributes(suite_schedule_params(@suite_schedule))
+            success = SuiteSchedule.find(@suite_schedule[:id]).update_attributes(suite_schedule_params(@suite_schedule))
 
             if(success)
                 render json: format_response_json({
                     message: 'Suite schedule updated!',
-                    status: true
+                    status: true,
+                    result: @suite_schedule
                 })
             else        
                 render json: format_response_json({
@@ -76,7 +76,7 @@ class SuiteScheduleController < ApplicationController
                     status: false
                 })
             end
-        rescue
+        rescue 
             render json: format_response_json({
                 message: 'Failed to update suite schedule!',
                 status: false
