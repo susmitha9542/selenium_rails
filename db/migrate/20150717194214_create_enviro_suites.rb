@@ -1,4 +1,4 @@
-class CreateEnviroSuites < ActiveRecord::Migration
+class CreateEnviroSuites < ActiveRecord::Migration[6.0]
   def change
     create_table :enviro_suites do |t|
       t.integer :environment_id

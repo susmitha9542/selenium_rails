@@ -1,4 +1,4 @@
-class CreateCaseSuites < ActiveRecord::Migration
+class CreateCaseSuites < ActiveRecord::Migration[6.0]
   def change
     create_table :case_suites do |t|
       t.integer :test_case_id

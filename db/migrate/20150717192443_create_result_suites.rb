@@ -1,4 +1,4 @@
-class CreateResultSuites < ActiveRecord::Migration
+class CreateResultSuites < ActiveRecord::Migration[6.0]
   def change
     create_table :result_suites do |t|
       t.integer :rd_id

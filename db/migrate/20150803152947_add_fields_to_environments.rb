@@ -1,4 +1,4 @@
-class AddFieldsToEnvironments < ActiveRecord::Migration
+class AddFieldsToEnvironments < ActiveRecord::Migration[6.0]
   def change
     add_column :environments, :login_field, :string
     add_column :environments, :password_field, :string
