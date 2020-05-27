@@ -15,6 +15,5 @@ development:
   <<: *defaults
   database: selenium_rails
 
-
 cucumber:
   <<: *test

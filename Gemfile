@@ -40,6 +40,7 @@ gem 'recaptcha', require: "recaptcha/rails"
 #gem 'axlsx', '~> 2.0'
 #gem 'axlsx_rails'
 gem 'caxlsx_rails'
+gem 'whenever', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

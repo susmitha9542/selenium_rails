@@ -215,3 +215,17 @@ a:hover{
 .button-cell{
   text-align:center;
 }
+
+.modal-dialog-container{
+  background: transparent;
+  width: auto !important;
+}
+
+.modal-body{
+  margin: 10px;
+}
+
+.left-label{
+  text-align: start;
+  padding-left: 0px !important;
+}
