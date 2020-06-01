@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   match 'test_suites(/:id)/test_cases', to: "test_suites#test_cases", via: "get"
 
   match 'test_suites(/:id)/tests_ran', to: "test_suites#tests_ran", via: "get"
+
+  match 'test_suites(/:id)/unschedule', to: "test_suites#unschedule", via: [:get , :post]
   
   match '/modal_show', to: "test_cases#modal_show", via: "get"
   

@@ -124,6 +124,14 @@ class TestSuitesController < ApplicationController
     @schedulers = @test_suite.schedulers
   end
 
+  def unschedule 
+    logger.debug("THE PARAMS IN UNSCHEDULE ARE")
+    id = params[:id]
+    s = Scheduler.where(test_suite_id: id)
+    s.destroy_all
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_test_suite
