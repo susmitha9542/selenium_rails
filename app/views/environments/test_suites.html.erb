@@ -31,7 +31,8 @@
 				<td><%= ts.id %></td>
 				<td><%= ts.name %></td>
 				<td class="button-cell">
-					<%= link_to "Cases", {controller: "test_cases", action: "index", id: ts.id }, class: "btn btn-default btn-sm" %>
+					<%#= link_to "Cases", {controller: "test_cases", action: "index", id: ts.id }, class: "btn btn-default btn-sm", id: "myBtn" %>
+					<%= link_to "Cases", {controller: "test_suites", action: "test_cases", id: ts.id }, class: "btn btn-default btn-sm", target: :_blank%>
 					<% if Scheduler.where(test_suite_id: ts.id).pluck(:status).include?('READY') %>
 
 						<%= link_to "Scheduled", {controller: "test_suites", action: "tests_ran", id: ts.id }, class: "btn btn-default btn-sm", "data-toggle" => "modal", "data-target" => "#cases", remote: true %>
@@ -49,6 +50,11 @@
 		</tbody>
 	</table>
 </div>
+
+
+
+
+
 <script>
 	$("#suite-table-dude").dataTable();
 </script>
