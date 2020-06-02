@@ -41,6 +41,8 @@ gem 'recaptcha', require: "recaptcha/rails"
 #gem 'axlsx_rails'
 gem 'caxlsx_rails'
 gem 'whenever', require: false
+#TabsOnRails is a simple Rails plugin for creating tabs and navigation menus. It provides helpers for generating navigation menus with a flexible interface.
+gem "tabs_on_rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

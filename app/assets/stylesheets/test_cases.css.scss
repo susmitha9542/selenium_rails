@@ -27,11 +27,30 @@
 
   #loginbox{ 
     float:left;
-    margin-left: 30%;  
-    width:40%;  
     background-color: lightgrey;
     border: 5px solid green;
     padding: 20px;
+  }
+
+
+  .container{
+    width: 473px;
+  }
+
+  fieldset {
+      border: 1px groove #ddd !important;
+      padding: 0 1.4em 1.4em 1.4em !important;
+      margin: 0 0 1.5em 0 !important;
+      -webkit-box-shadow:  0px 0px 0px 0px #000;
+      box-shadow:  0px 0px 0px 0px #000;
+  }
+
+
+  legend {
+      width:inherit;
+      padding:0 6px; 
+      border-bottom:none;
+      font-size: 11px;
   }
 
   #custombox{ 
@@ -48,10 +67,12 @@
     clear:left;
     text-align:right;
     padding-right:10px;
+
   }
 
   input, label {
     float:left;
+    font-size:10px;
   }
 
   h3 {
