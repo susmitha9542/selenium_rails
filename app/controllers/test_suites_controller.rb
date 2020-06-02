@@ -127,9 +127,22 @@ class TestSuitesController < ApplicationController
   def unschedule 
     logger.debug("THE PARAMS IN UNSCHEDULE ARE")
     id = params[:id]
+    logger.debug("THE ID is #{id.inspect}")
+    #environ_id = id = session[:enviro_id]
+    #@test_suites = TestSuite.where(environment_id: environ_id)
     s = Scheduler.where(test_suite_id: id)
-    s.destroy_all
-
+    logger.debug("THE Scheduler is #{s.inspect}")
+    s.each do |st|
+      if st.status == "READY"
+        logger.debug("GOING INTO READY")
+        st.destroy
+        respond_to do |format|
+          format.html {redirect_to "/environments/#{session[:enviro_id]}/test_suites"}
+        end
+      end
+    end
+     
+    #render :template => "environments/test_suites.html.erb"
   end
 
   private
