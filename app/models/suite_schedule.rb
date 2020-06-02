@@ -5,7 +5,6 @@ class SuiteSchedule < ActiveRecord::Base
         @schedules = SuiteSchedule.where(:active=> true)
         today = Time.now.utc.to_date
         suite_time_hash = Set[]
-        byebug
         @schedules.map do |s|
             start_date = s.start_date.to_date
             end_date = s.end_date.to_date
@@ -13,7 +12,6 @@ class SuiteSchedule < ActiveRecord::Base
                 suite_time_hash.add({suite_id: s.test_suite_id, date: s.time.to_time.utc})
             end
         end
-        byebug
         suite_time_hash.to_a.map do |s|
             Scheduler.create_new_schedule(s[:suite_id], s[:date])
         end
