@@ -1,4 +1,5 @@
-$(document).ready(function () {
+var firstTime = true;
+function setupScheduleEvents() {
     var table = null;
 
     function getApiUrl(partialUrl) {
@@ -228,7 +229,6 @@ $(document).ready(function () {
         }
         forUpdate = dataToSave.id > 0;
         var tableID = "#scheduleTable";
-
         $().makeHttpRequest(getApiUrl(`./suite_schedule/${(forUpdate ? "update_suite_schedule" : "create_suite_schedule")}`), "POST", { suite_schedule: dataToSave, schedule_immediately: scheduleImmediately }, (data) => {
             if (forUpdate > 0) {
                 var item = $(tableID).find(".selected");
@@ -266,7 +266,6 @@ $(document).ready(function () {
         var suiteID = $(this).data("id");
         var suiteName = $(this).data("name");
 
-        var tableID
         var html = `<div>
             <div style="display:flex; justify-content: flex-end; padding: 5px;">
                 <button id="btnAddNew" class="btn btn-primary btn-sm">Add New</button>
@@ -288,6 +287,9 @@ $(document).ready(function () {
             suiteName,
             html
         );
-        initializeDataTable("#scheduleTable", suiteID);
+        if (firstTime) {
+            initializeDataTable("#scheduleTable", suiteID);
+            firstTime = false;
+        }
     });
-});
+}
