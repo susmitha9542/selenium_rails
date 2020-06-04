@@ -19,14 +19,6 @@
         <br>
 <% end -%>   
 
-<!-- <% if @custom.present? %>
-	<h3>Existing Environments</h3>
-	<% @custom.each do |cc| %>
-      <p>Name       : <%= cc.name %> </p>
-      <p>Command    : <%= cc.command %></p>
-      <p>Parameters : <%= cc.parameters %></p>
-    <% end %>
-<% end %> -->
 <br>
 <br>
 <br>
@@ -42,13 +34,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @custom.each do |cc| %>
-				<tr>
-					<td><%= cc.name %></td>
-					<td><%= cc.command %></td>
-					<td><%= cc.parameters %></td>
-				</tr>
-			<% end %>
+			
 		</tbody>
 	</table>
 <% end %>
