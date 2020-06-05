@@ -38,7 +38,7 @@
 						<%= link_to "Scheduled", {controller: "test_suites", action: "tests_ran", id: ts.id }, class: "btn btn-default btn-sm", "data-toggle" => "modal", "data-target" => "#cases", remote: true %>
 						<%= link_to "Unschedule", {controller: "test_suites", action: "unschedule", id: ts.id }, class: "btn btn-primary btn-sm btn-unschedule" %>
 					<% else %>
-						<%= link_to "Schedule", {controller: "test_suites", action: "tests_ran", id: ts.id }, class: "btn btn-default btn-sm", "data-toggle" => "modal", "data-target" => "#cases", remote: true %>
+						<%= link_to "Past Run Status", {controller: "test_suites", action: "tests_ran", id: ts.id }, class: "btn btn-default btn-sm", "data-toggle" => "modal", "data-target" => "#cases", remote: true %>
 						<button class="btn btn-primary btn-sm btn-schedule-now" data-id="<%=ts.id%>" data-name="<%= ts.name %>">Schedule Now</button>						
 					<% end %>
 					<%= hidden_field_tag :id, ts.id  %>
