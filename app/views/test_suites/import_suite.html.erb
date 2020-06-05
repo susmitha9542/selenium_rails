@@ -10,6 +10,10 @@
 			<%= file_field_tag :file %>
 		</div>
 		<div class="col-md-3 col-sm-3">
+			Description
+			<%= text_field_tag :description %>
+		</div>
+		<div class="col-md-3 col-sm-3">
 			Cases depends on each other?
 			<%= check_box_tag :dependency %>
 		</div>
@@ -18,3 +22,6 @@
 		</div>
 	</div>
 <% end %>
+
+
+

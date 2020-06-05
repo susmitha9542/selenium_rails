@@ -19,7 +19,7 @@ class TestSuite < ActiveRecord::Base
     end
   end
   
-  def self.import(file, name, environment_id, dependency)
+  def self.import(file, name, environment_id, description, dependency)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     if validate_header(header) then
@@ -31,6 +31,7 @@ class TestSuite < ActiveRecord::Base
       logger.debug "TestSuite.import - new suite name is #{new_suite.name}"
       new_suite.environment_id = environment_id
       new_suite.dependency = dependency
+      new_suite.description = description
       new_suite.save!
       new_suite_id = new_suite.id
       # Now starting to iterate through each row. 
