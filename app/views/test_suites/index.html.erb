@@ -9,6 +9,7 @@
   </thead>
 
   <tbody>
+    <% if !@test_suites.nil? %>
     <% @test_suites.each do |test_suite| %>
       <tr>
         <td><%= test_suite.name %></td>
@@ -17,6 +18,9 @@
         <td><%= link_to 'Destroy', test_suite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <% else %>
+    <h3>PLEASE SELECT ENVIRONMENT FROM THE HOME PAGE </h3>
+    <% end -%>
   </tbody>
 </table>
 

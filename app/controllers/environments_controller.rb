@@ -1,5 +1,5 @@
 class EnvironmentsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_environment, only: [:show, :edit, :update, :destroy]
 
   # GET /environments

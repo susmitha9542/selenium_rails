@@ -4,7 +4,12 @@ class TestSuitesController < ApplicationController
   # GET /test_suites
   # GET /test_suites.json
   def index
-    @test_suites = TestSuite.all
+    environ_id = session[:enviro_id] 
+    if environ_id.present? 
+      @test_suites = TestSuite.where(environment_id: environ_id)
+    else
+      @test_suites
+    end  
   end
 
   # GET /test_suites/1
