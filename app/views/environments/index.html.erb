@@ -3,6 +3,7 @@
 <table id="envir_table">
   <thead>
     <tr>
+      <th>Name</th>
       <th>Url</th>
       <th>Username</th>
       <th>Password</th>
@@ -13,13 +14,13 @@
   <tbody>
     <% @environments.each do |environment| %>
       <tr>
+        <td><%= environment.name %></td>
         <td><%= environment.url %></td>
         <td><%= environment.username %></td>
         <td><%= environment.password %></td>
         <td><%= link_to 'Show', environment %></td>
         <td><%= link_to 'Edit', edit_environment_path(environment) %></td>
         <td><%= link_to 'Destroy', environment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Custom Commands', edit_custom_command_path(environment)%></td>
       </tr>
     <% end %>
   </tbody>
