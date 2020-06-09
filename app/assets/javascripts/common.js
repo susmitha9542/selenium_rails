@@ -44,7 +44,8 @@ $(function () {
                 });
         },
         showMessage: function (title, message) {
-            alert(message);
+            if (message)
+                alert(message);
         },
         showHtmlDialog: function (title, body, closeAction = null) {
             var curTimeString = Date.now();
