@@ -255,41 +255,51 @@ function setupScheduleEvents() {
         });
     }
 
-    $(".btn-schedule-now").on('click', function (e) {
-        e.preventDefault();
-        var suiteID = $(this).data("id");
-        createNewSchedule(suiteID);
-    });
+    function setupButtonClickEvents() {
+        $(".btn-schedule-now").on('click', function (e) {
+            e.preventDefault();
+            var suiteID = $(this).data("id");
+            createNewSchedule(suiteID);
+        });
 
-    $(".btn-schedule-later").on('click', function (e) {
-        e.preventDefault();
-        var suiteID = $(this).data("id");
-        var suiteName = $(this).data("name");
+        $(".btn-schedule-later").on('click', function (e) {
+            e.preventDefault();
+            var suiteID = $(this).data("id");
+            var suiteName = $(this).data("name");
 
-        var html = `<div>
-            <div style="display:flex; justify-content: flex-end; padding: 5px;">
-                <button id="btnAddNew" class="btn btn-primary btn-sm">Add New</button>
-            </div>
-            <table id="scheduleTable" class="table table-bordered table-responsive table-hover stripe">
-                <thead>
-                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Start Date </th>
-                        <th>End Date</th>
-                        <th>Time</th>
-                        <th>Action</th>
-                     </tr>
-                </thead>
-            </table>
-        </div>`;
-        $().showHtmlDialog(
-            suiteName,
-            html
-        );
-        if (firstTime) {
-            initializeDataTable("#scheduleTable", suiteID);
-            firstTime = false;
-        }
+            var html = `<div>
+                <div style="display:flex; justify-content: flex-end; padding: 5px;">
+                    <button id="btnAddNew" class="btn btn-primary btn-sm">Add New</button>
+                </div>
+                <table id="scheduleTable" class="table table-bordered table-responsive table-hover stripe">
+                    <thead>
+                         <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Start Date </th>
+                            <th>End Date</th>
+                            <th>Time</th>
+                            <th>Action</th>
+                         </tr>
+                    </thead>
+                </table>
+            </div>`;
+            $().showHtmlDialog(
+                suiteName,
+                html
+            );
+            if (firstTime) {
+                initializeDataTable("#scheduleTable", suiteID);
+                firstTime = false;
+            }
+        });
+    }
+
+    setupButtonClickEvents();
+
+    $('#suite-table-dude').on('page.dt', function () {
+        setTimeout(() => {
+            setupButtonClickEvents();
+        }, 500);
     });
 }

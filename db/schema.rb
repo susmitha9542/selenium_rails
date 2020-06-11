@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_130931) do
+ActiveRecord::Schema.define(version: 2020_06_09_132546) do
 
   create_table "case_suites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "test_case_id"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 2020_05_21_130931) do
     t.integer "default_suite_id"
     t.text "user_emails"
     t.text "selenium_tester_url"
+    t.text "git_url"
+    t.string "git_username"
+    t.string "git_password"
+    t.string "git_branch"
   end
 
   create_table "result_cases", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
@@ -112,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_130931) do
     t.text "description"
     t.boolean "need_screenshot", default: false
     t.integer "custom_command_id", default: 0
+    t.boolean "enter_action", default: false
   end
 
   create_table "test_data", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
@@ -132,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_130931) do
     t.boolean "dependency", default: false
     t.text "base_url"
     t.integer "base_suite_id"
+    t.string "description"
   end
 
   create_table "testing_cases", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|

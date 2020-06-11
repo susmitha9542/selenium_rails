@@ -235,7 +235,7 @@ class BrowserExtensionController < ApplicationController
     begin
       case_id = params[:case_id]
       
-      @detail = TestCase.where(id: case_id).select(:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab).first.as_json
+      @detail = TestCase.where(id: case_id).select(:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab, :enter_action).first.as_json
       @detail["case_id"] = case_id
 
       render json: format_response_json({
@@ -253,7 +253,7 @@ class BrowserExtensionController < ApplicationController
 
   private 
   def test_case_params(test_case)
-      test_case.permit([:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab,:custom_command_id ])
+      test_case.permit([:id,:field_name,:field_type,:description,:xpath,:read_element,:input_value,:action,:action_url,:sleeps,:need_screenshot,:new_tab,:custom_command_id,:enter_action])
   end
 
   def case_suite_params
