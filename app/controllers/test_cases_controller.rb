@@ -6,6 +6,7 @@ class TestCasesController < ApplicationController
   def index
     logger.debug("SESSION OBJECT #{session[:enviro_id].inspect}")
     id = session[:enviro_id]
+    @e = Environment.find(id).name
     @tc = TestSuite.where(environment_id: id)
     @t = TestSuite.where(environment_id: id).pluck(:id)
     logger.debug("TEST SUITE #{@t.inspect}")

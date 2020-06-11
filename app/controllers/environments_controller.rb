@@ -1,5 +1,5 @@
 class EnvironmentsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :update]
   before_action :set_environment, only: [:show, :edit, :update, :destroy]
 
   # GET /environments
@@ -44,7 +44,7 @@ class EnvironmentsController < ApplicationController
   def update
     custom_command_params = params[:custom_command]
     logger.debug("PARAMS OF CUSTOM COMMAND #{custom_command_params.inspect}")
-    if custom_command_params.present?
+    if !custom_command_params.nil?
       @custom.update(custom_command_params)
       logger.debug("IN THE ENV UPDATE CUSTOM COMMAND #{@custom.inspect}")
     end
@@ -109,6 +109,7 @@ class EnvironmentsController < ApplicationController
   def reports
     logger.debug("SESSION OBJECT #{session[:enviro_id].inspect}")
     id = session[:enviro_id]
+    @e = Environment.find(id).name
     #@sch = Array.new
     @schedule = Array.new
     @test_suites = TestSuite.where(environment_id: id).pluck(:id)
