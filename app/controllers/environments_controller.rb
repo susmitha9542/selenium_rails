@@ -27,6 +27,7 @@ class EnvironmentsController < ApplicationController
   # POST /environments.json
   def create
     @environment = Environment.new(environment_params)
+    
 
     respond_to do |format|
       if @environment.save
@@ -44,7 +45,7 @@ class EnvironmentsController < ApplicationController
   def update
     custom_command_params = params[:custom_command]
     logger.debug("PARAMS OF CUSTOM COMMAND #{custom_command_params.inspect}")
-    if !custom_command_params.nil?
+    if !custom_command_params.present?
       @custom.update(custom_command_params)
       logger.debug("IN THE ENV UPDATE CUSTOM COMMAND #{@custom.inspect}")
     end
